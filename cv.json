@@ -1,0 +1,201 @@
+{
+	"basics": {
+		"name": "Aaron Pérez Aguilera",
+		"label": "Full Stack Developer, IT & eCommerce Manager con más de 3 años de experiencia.",
+		"image": "/me.avif",
+		"email": "aaronperezaguilera@gmail.com",
+		"phone": "+34 638 39 32 47",
+		"url": "https://dotmd.dev",
+		"summary": "Actualmente, ejerzo como IT & eCommerce Manager en Escorpion, donde canalizo mi pasión por la tecnología y el eCommerce en la mejora continua de su plataforma de venta online. Mi enfoque abarca desde el desarrollo frontend hasta la promoción estratégica, siempre con el objetivo de brindar una experiencia excepcional al usuario.",
+		"location": {
+			"address": "",
+			"postalCode": "08700",
+			"city": "Igualada",
+			"countryCode": "ES",
+			"region": "España"
+		},
+		"profiles": [
+			{
+				"network": "LinkedIn",
+				"username": "aaronperezaguilera",
+				"url": "https://linkedin.com/in/aaronperezaguilera"
+			},
+			{
+				"network": "X",
+				"username": "dotmdx",
+				"url": "https://x.com/dotmdx"
+			},
+			{
+				"network": "GitHub",
+				"username": "aaronperezaguilera",
+				"url": "https://github.com/aaronperezaguilera"
+			},
+			{
+				"network": "Blog",
+				"username": "Aaron",
+				"url": "https://dotmd.io"
+			}
+		]
+	},
+	"work": [
+		{
+			"name": "Escorpion",
+			"position": "IT & eCommerce Manager",
+			"url": "https://escorpion.com",
+			"startDate": "2021-01-01",
+			"endDate": null,
+			"summary": "Lidero ",
+			"highlights": ["Started the company"]
+		},
+		{
+			"name": "SAI Computers",
+			"position": "Programador SQL",
+			"url": "https://saicomputers.net",
+			"startDate": "2019-09-01",
+			"endDate": "2020-06-01",
+			"summary": "Programé en SQL",
+			"highlights": ["Started the company"]
+		}
+	],
+	"volunteer": [
+		{
+			"organization": "Organization",
+			"position": "Volunteer",
+			"url": "https://organization.com/",
+			"startDate": "2020-01-01",
+			"endDate": "2013-01-01",
+			"summary": "Description…",
+			"highlights": ["Awarded 'Volunteer of the Month'"]
+		}
+	],
+	"education": [
+		{
+			"institution": "Universitat Oberta de Catalunya",
+			"url": "https://www.uoc.edu/portal/es/index.html",
+			"area": "Ingeniero de Software",
+			"studyType": "Bachelor",
+			"startDate": "2023-01-01",
+			"endDate": null,
+			"score": "10.0",
+			"courses": ["DB1101 - Basic SQL"]
+		}
+	],
+	"awards": [
+		{
+			"title": "Award",
+			"date": "2014-11-01",
+			"awarder": "Company",
+			"summary": "There is no spoon."
+		}
+	],
+	"certificates": [
+		{
+			"name": "Certificate",
+			"date": "2021-11-07",
+			"issuer": "Company",
+			"url": "https://certificate.com"
+		}
+	],
+	"publications": [
+		{
+			"name": "Publication",
+			"publisher": "Company",
+			"releaseDate": "2014-10-01",
+			"url": "https://publication.com",
+			"summary": "Description…"
+		}
+	],
+	"skills": [
+		{
+			"name": "HTML",
+			"level": "Master",
+			"keywords": ["Desarrollo Web", "Frontend"]
+		},
+		{
+			"name": "CSS",
+			"level": "Master",
+			"keywords": ["Desarrollo Web", "Frontend", "Diseño Responsive"]
+		},
+		{
+			"name": "JavaScript",
+			"level": "Master",
+			"keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack"]
+		},
+		{
+			"name": "Tailwind",
+			"level": "Avanzado",
+			"keywords": ["Desarrollo Web", "Frontend", "CSS Framework", "Diseño Responsive"]
+		},
+		{
+			"name": "TypeScript",
+			"level": "Avanzado",
+			"keywords": ["Desarrollo Web", "Frontend", "Backend", "JavaScript Superset"]
+		},
+		{
+			"name": "Node",
+			"level": "Avanzado",
+			"keywords": ["Desarrollo Web", "Backend", "JavaScript", "Servidor"]
+		},
+		{
+			"name": "MySQL",
+			"level": "Avanzado",
+			"keywords": ["Bases de Datos", "SQL", "Almacenamiento de Datos", "Backend"]
+		},
+		{
+			"name": "Git",
+			"level": "Avanzado",
+			"keywords": ["Control de Versiones", "Colaboración", "Código Fuente"]
+		},
+		{
+			"name": "GitHub",
+			"level": "Avanzado",
+			"keywords": ["Control de Versiones", "Colaboración", "Código Fuente", "Git"]
+		},
+		{
+			"name": "Next.js",
+			"level": "Avanzado",
+			"keywords": ["Desarrollo Web", "Frontend", "React Framework", "SSR", "Static Generation"]
+		},
+		{
+			"name": "React",
+			"level": "Avanzado",
+			"keywords": ["Desarrollo Web", "Frontend", "JavaScript Library", "UI"]
+		}
+	],
+	"languages": [
+		{
+			"language": "Español",
+			"fluency": "Nativo"
+		},
+		{
+			"language": "Catalán",
+			"fluency": "Nativo"
+		},
+		{
+			"language": "Inglés",
+			"fluency": "Avanzado"
+		}
+	],
+	"interests": [
+		{
+			"name": "Wildlife",
+			"keywords": ["Ferrets", "Unicorns"]
+		}
+	],
+	"references": [
+		{
+			"name": "Jane Doe",
+			"reference": "Reference…"
+		}
+	],
+	"projects": [
+		{
+			"name": "dotmd.io",
+			"isActive": true,
+			"description": "Blog personal en el que podréis encontrar artículos sobre programación, desarrollo web y tecnología, además de artículos de opinión y reflexión.",
+			"highlights": ["Proyecto personal", "En desarrollo"],
+			"url": "https://dotmd.io",
+			"github": null
+		}
+	]
+}

@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "minimalist-portfolio-json",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,8 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.7.1",
-    "@astrojs/check": "^0.6.0",
-    "typescript": "^5.4.5"
+    "@astrojs/check": "0.4.1",
+    "astro": "4.3.2",
+    "hotkeypad": "0.1.0",
+    "typescript": "5.3.3"
   }
 }

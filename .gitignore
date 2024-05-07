@@ -134,3 +134,7 @@ dist
 
 # Astro files
 .astro
+
+# Prettier files
+.prettierrc
+.prettierignore
