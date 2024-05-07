@@ -131,3 +131,6 @@ dist
 
 # VSCode files
 .vscode
+
+# Astro files
+.astro
