@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Section from '@/components/Section.astro'
+---
+
+<Layout title='Página no encontrada'>
+  <main>
+    <Section>
+      <h1>404</h1>
+      <h2>Página no encontrada</h2>
+      <hr />
+      <a href='/'>Volver al inicio</a>
+    </Section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 4rem;
+    margin: auto;
+    width: 100%;
+  }
+
+  h2 {
+    font-weight: normal;
+  }
+
+  @media (width <= 700px) {
+    main {
+      padding: 2rem;
+    }
+  }
+</style>
