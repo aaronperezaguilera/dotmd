@@ -1,0 +1,386 @@
+---
+title: 'Primeros pasos con Astro DB'
+pubDate: 2024-03-27
+description: 'En este artículo exploraremos como hacer un contador de visitas para nuestro blog, algo muy sencillo. Podéis seguir los pasos para probar juntos este nuevo producto acompañados de la documentación oficial.'
+contentType: 'guia'
+author: 'Aaron'
+image:
+  url: '../../assets/images/explorando-astrodb/Hero.webp'
+  alt: 'Banner del artículo Exlorando Astro DB'
+tags: ['Astro', 'DB', 'Desarrollo web']
+---
+
+Hace escasos días Astro presentó Astro DB, una nueva solución de base de datos para el framework Astro y que hoy estaremos explorando.
+
+## Tabla de contenidos
+
+## ¿Que es Astro DB?
+
+Lo nuevo de Astro se presenta como una base de datos SQL completamente administrada y optimizada para el ecosistema de Astro, en el que está construido este blog, con el que personalmente tengo muy buenas experiencias, y del que veremos más en siguientes artículos.
+
+Está basado en SQLite, lo que hace muy sencilla su comprensión si habéis trabajado con esta base de datos anteriormente. Además utiliza Drizzle, un ORM de TypeScript que hace muy sencillas tanto las llamadas como la configuración de la base de datos.
+
+En este artículo exploraremos como hacer un contador de visitas para nuestro blog, algo muy sencillo. Podéis seguir los pasos para probar juntos este nuevo producto acompañados de la documentación oficial. [^1]
+
+## Instalación
+
+El primer paso es añadir la dependencia a nuestro proyecto de Astro con el siguiente comando:
+
+```zsh
+npx astro add db
+```
+
+Este comando instalará los paquetes necesarios, añadirá la dependencia en el archivo _astro.config.mjs_ y creará un directorio con el nombre _db_ en la raíz del proyecto. En esta carpeta aparecerán el archivo de configuración _config.ts_ y un archivo semilla _seed.ts_.
+
+## Configuración
+
+En el archivo de configuración definiremos, por supuesto, la base de datos, las tablas que utilizaremos, y sus correspondientes columnas.
+
+A continuación tenéis el ejemplo que utilizaremos en esta guía:
+
+```ts
+// db/config.ts
+
+import { defineDb, defineTable, column } from 'astro:db'
+
+const Posts = defineTable({
+	columns: {
+		slug: column.text({ primaryKey: true, unique: true }),
+		views: column.number({ default: 0 })
+	}
+})
+
+export default defineDb({
+	tables: { Posts }
+})
+```
+
+De esta forma tan sencilla hemos definido la base de datos con la tabla _Posts_ en la que tenemos las siguientes columnas:
+
+1. **slug**: Nuestra clave primaria que contendrá el identificador de la URL de cada artículo
+2. **views**: El número de visitas que ha recibido el artículo con el valor por defecto 0.
+
+Con esto estamos listos para trabajar localmente.
+
+Al iniciar el servidor de desarrollo Astro creará un archivo _content.db_ en el directorio _./astro_ que contendrá, como el nombre indica, nuestra base de datos. Esta base de datos se restablece cada vez que reiniciamos el servidor de desarrollo.
+
+Crearemos la conexión con Astro Studio y la base de datos remota en el último paso, [despliegue en remoto](#despliegue-en-remoto).
+
+También podemos rellenar el archivo semilla, que insertará los datos que queramos al ejecutar un comando.
+
+```ts
+// db/seed.ts
+import { db, Posts } from 'astro:db'
+
+export default async function () {
+	await db.insert(Posts).values([{ slug: 'primer-articulo', views: 256 }])
+}
+```
+
+```bash
+astro db execute db/seed.ts
+```
+
+## Implementación
+
+Astro tiene dos modos de renderizado:
+
+1. Pre-renderizado en el momento de la compilación.
+2. Renderizado bajo demanada en el servidor.
+
+El modo que elijamos se configura en el archivo _astro.config.mjs_. Podéis encontrar más información en la documentación oficial. [^2]
+
+En este ejemplo utilizamos la segunda opción, renderizado bajo demanda, ya que consumiremos la base de datos a través de un endpoint que no debe estar pre-renderizado.
+
+### Creación del endpoint
+
+Para crear un Endpoint en Astro hay varias formas de hacerlo, en este ejemplo crearemos una ruta dinámica que contendrá el identificador del artículo en la ruta. Hay otras formas de hacerlo (probablemente con mejor rendimiento), pero para este ejemplo y para hacerlo lo más sencillo posible será una buena solución, de hecho, si este artículo tiene buena acojida, plantearé la posibilidad de optimizarlo al máximo.
+
+Si necesitáis más información sobre los Endpoints en Astro la podéis encontar en la documentación oficial. [^3]
+
+A continuación tenéis el archivo completo:
+
+```ts
+// pages/api/[slug].ts
+
+export const prerender = false
+
+import { Posts, db, eq, sql } from 'astro:db'
+
+export async function GET({ request }) {
+	const slug = new URL(request.url).pathname.split('/').pop()
+
+	if (slug) {
+		const storedVisits = await db
+			.select({ views: Posts.views })
+			.from(Posts)
+			.where(eq(Posts.slug, slug))
+
+		if (storedVisits.length > 0 && storedVisits[0]) {
+			return new Response(JSON.stringify(storedVisits[0].views), {
+				status: 200,
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+		} else {
+			return new Response(JSON.stringify(0), {
+				status: 200,
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+		}
+	}
+}
+
+export async function POST({ request }) {
+	const slug = new URL(request.url).pathname.split('/').pop()
+
+	if (slug) {
+		const visits = await db
+			.insert(Posts)
+			.values({ slug: slug, views: 1 })
+			.onConflictDoUpdate({ target: Posts.slug, set: { views: sql`${Posts.views} + 1` } })
+
+		return new Response(JSON.stringify(visits), {
+			status: 200,
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+	}
+}
+```
+
+A modo de resumen de lo que hacemos en el Endpoint:
+
+- En primer lugar desactivamos el pre-renderizado para esta ruta, haciendo que se ejecute con cada llamada.
+- Importamos todo lo necesario del paquete astro:db para hacer las llamadas a la base de datos.
+- Creamos los métodos GET y POST (Utilizamos GET para la consulta de las visitas y POST para el incremento de las mismas).
+- En cada método recogemos la request y creamos la constante _slug_ que contiene el identificador del artículo.
+- Por último hacemos el proceso de selección y de inserción en su método correspondiente para el artículo del que hemos recogido el identificador.
+
+Las funciones utilizadas para la selección e inserción son del ORM Drizzle, si necesitáis más información sobre su funcionamiento la podéis encontrar en la documentación oficial. [^4]
+
+### Creación del componente contador con Preact
+
+Con el Endpoint listo podemos crear el componente del contador que hará la solicitud al Endpoint.
+
+EL motivo principal es que Astro es un generador de sitios estáticos, y aunque nos permite crear páginas con SSR, hacer que se realice la llamada a la API y lo pinte en el HTML cada vez que se carga la página retrasaría demasiado la carga.
+
+Utilizando un componente no retrasaremos la carga ya que ejecutaremos la llamada e hidrataremos el componente en el cliente, esto se conoce en Astro como isla. Podéis encontrar más información al respecto en la documentación oficial. [^5]
+
+Para este ejemplo utilizaremos Preact, una alternativa muy rápida y ligera de React.
+
+Crearemos el componente en nuestro directorio de componentes. A continuación tenéis el archivo completo:
+
+```tsx
+// components/Views.tsx
+
+import { useEffect, useState } from 'preact/hooks'
+
+export const Views = ({ slug, increment }: { slug: string; increment?: boolean }) => {
+	const [views, setViews] = useState()
+
+	useEffect(() => {
+		if (increment) {
+			const incrementViews = async () => {
+				await fetch(`/api/${slug}`, {
+					method: 'POST'
+				})
+			}
+			incrementViews()
+		}
+		const fetchViews = async () => {
+			const visitsData = await fetch(`/api/${slug}`)
+			const visits = await visitsData.json()
+
+			setViews(visits)
+		}
+		fetchViews()
+	}, [slug])
+
+	return <span>{views}</span>
+}
+
+export default Views
+```
+
+Este componente recibirá como parámetros el identificador del artículo y, en caso de que sea necesario, un booleano llamado increment, que hará que donde se ubique haga el incremento de las visitas, de modo que podremos reutilizar el mismo componente en el listado de artículos y en el propio artículo añadiendo esta funcionalidad.
+
+Ahora estamos listos para añadir el contador donde se requiera, en mi caso, en el componente del artículo y en el encabezado del artículo.
+
+```tsx
+// components/BlogPost.astro
+
+---
+import { Views } from './Views.tsx'
+const { post } = Astro.props
+---
+
+<article>
+	<header>
+		<h1>{post.data.title}</h1>
+	</header>
+	<footer>
+		<small>
+			<Views
+				slug={post.slug}
+				client:only='preact'
+			/>
+		</small>
+	</footer>
+</article>
+
+```
+
+```tsx
+// components/PostHeader.astro
+
+---
+const { slug } = Astro.props
+import { Views } from './Views'
+---
+
+<header>
+	<nav>
+		<a href='/blog'>
+			Volver al Blog
+		</a>
+		<small>
+			<Views
+				slug={slug}
+				increment
+				client:only='preact'
+			/>
+		</small>
+	</nav>
+</header>
+
+```
+
+Es importante no olvidar añadir en la etiqueta del componente _client:only='preact'_, esta directiva controla como los componentes se hidratan en la página, en este caso lo hará totalmente en el cliente. Utilizando esta directiva hay que informar del framework que utilicemos correctamente, en este caso Preact. Podéis encontrar más información al respecto en la documentación oficial. [^6]
+
+## Despliegue en remoto
+
+Para desplegar nuestra aplicación utilizando Astro Studio, donde se alojará nuestra base de datos, haremos una pequeña configuración para conectarnos e inicializar la base de datos con la configuración que hicimos.
+
+El primer paso es crearnos una cuenta en Astro Studio, que cuenta con un plan gratuito bastante generoso, y crearemos un proyecto el cual podemos enlazar con un repositorio de GitHub.
+
+Con esto podemos hacer la conexión de nuestro proyecto ejecutando los siguientes comandos:
+
+```zsh
+astro db login # Follow prompts, login with Github
+
+astro db link # Again, follow prompts, create a new project or link local db to an existing one
+
+astro db push # Tell the remote DB what you want it to look like
+```
+
+Ahora, si entramos en Astro Studio, veremos que ya tenemos creada la base de datos y la tabla que definimos anteriormente.
+
+En el caso del despliegue a producción utilizando cualquier proveedor no hará falta hacer este paso, ya que crearemos un token en Astro Studio y lo añadiremos a las variables de entorno.
+
+Con el enlace realizado podemos añadir la directiva _--remote_ en los comandos de Astro en nuestro _package.json_:
+
+```json
+// package.json
+
+{
+	"name": "astro-blog",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev --remote", // Para utilizar la conexión remota en el servidor de desarrollo.
+		"start": "astro dev",
+		"build": "astro build --remote", // Para utilizar la conexión remota en producción.
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		...
+	},
+	"devDependencies": {
+		...
+	}
+}
+```
+
+Además podemos ejecutar otros comandos, como ejecutar el archivo semilla en remoto añadiendo la directiva del siguiente modo:
+
+```bash
+astro db execute db/seed.ts --remote
+```
+
+## Conclusiones
+
+En este artículo, hemos explorado los primeros pasos con Astro DB, una solución de base de datos para el framework Astro.
+
+Como opinión personal, encuentro que Astro DB representa un paso significativo en la simplificación y optimización del manejo de bases de datos en el contexto del framework Astro. La integración fluida con SQLite y el uso de Drizzle como ORM ofrecen una experiencia de desarrollo más intuitiva y eficiente.
+
+Explorar la creación de un contador de visitas para mi blog ha sido una muy buena experiencia. La facilidad con la que se puede configurar y utilizar esta solución para interactuar con la base de datos, tanto localmente como en entornos de producción, es impresionante.
+
+Además, la capacidad de desplegar la aplicación en Astro Studio y gestionar la base de datos de forma remota agrega un nivel adicional de conveniencia y flexibilidad al proceso de desarrollo.
+
+En general, considero que Astro DB es una herramienta prometedora que simplifica considerablemente el manejo de datos en aplicaciones web desarrolladas con Astro, lo que hace que la creación de proyectos web sea más accesible y eficiente para desarrolladores de todos los niveles de experiencia.
+
+Si te ha gustado, te animo a compartir este artículo en tus redes. ¡Muchas gracias!
+
+---
+
+## Bibliografía
+
+[^1]:
+    <a
+    	href='https://docs.astro.build/en/guides/astro-db/'
+    	rel='noopener noreferrer'
+    	target='_blank'
+    >
+    	Documentación de Astro DB
+    </a>
+
+[^2]:
+    <a
+    	href='https://docs.astro.build/en/basics/rendering-modes/'
+    	rel='noopener noreferrer'
+    	target='_blank'
+    >
+    	Modos de renderizado
+    </a>
+
+[^3]:
+    <a
+    	href='https://docs.astro.build/en/guides/endpoints/'
+    	rel='noopener noreferrer'
+    	target='_blank'
+    >
+    	Endpoints en Astro
+    </a>
+
+[^4]:
+    <a
+    	href='https://orm.drizzle.team/docs/overview'
+    	rel='noopener noreferrer'
+    	target='_blank'
+    >
+    	Drizzle ORM
+    </a>
+
+[^5]:
+    <a
+    	href='https://docs.astro.build/en/concepts/islands/'
+    	rel='noopener noreferrer'
+    	target='_blank'
+    >
+    	Astro Islands
+    </a>
+
+[^6]:
+    <a
+    	href='https://docs.astro.build/en/reference/directives-reference/'
+    	rel='noopener noreferrer'
+    	target='_blank'
+    >
+    	Directivas de maquetado
+    </a>

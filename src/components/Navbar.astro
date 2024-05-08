@@ -1,0 +1,50 @@
+---
+import Home from '@/icons/Home.astro'
+import Blog from '@/icons/Blog.astro'
+import Stack from '@/icons/Stack.astro'
+import Contact from '@/icons/Contact.astro'
+import Cmd from '@/icons/Cmd.astro'
+import NavLink from '@/components//navbar/NavLink.astro'
+---
+
+<nav
+  class='fixed bottom-0 z-50 flex h-[65px] w-screen shrink-0 items-center justify-center border-r border-r-neutral-800 bg-[#131313] sm:sticky sm:top-0 sm:h-screen sm:w-[65px] sm:flex-col'
+>
+  <ul class='flex gap-6 sm:flex-col'>
+    <li>
+      <NavLink href='/'><Home /></NavLink>
+    </li>
+    <li>
+      <NavLink href='/blog'><Blog /></NavLink>
+    </li>
+    <!--
+        <li>
+            <a href="/">Proyectos</a>
+        </li> -->
+    <li>
+      <NavLink
+        href='/stack'
+        disabled
+        ><Stack /></NavLink
+      >
+    </li>
+    <!--
+        <li>
+            <a href="/">Sobre mi</a>
+        </li>-->
+    <li>
+      <NavLink
+        href='/contacto'
+        disabled
+        ><Contact /></NavLink
+      >
+    </li>
+    <li>
+      <NavLink
+        href='/cmd'
+        disabled
+        ><Cmd /></NavLink
+      >
+    </li>
+  </ul>
+</nav>

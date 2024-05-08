@@ -138,3 +138,5 @@ dist
 # Prettier files
 .prettierrc
 .prettierignore
+
+.DS_Store

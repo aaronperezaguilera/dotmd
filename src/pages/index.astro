@@ -8,7 +8,6 @@ import Hero from '@/components/sections/Hero.astro'
 import Languages from '@/components/sections/Languages.astro'
 import Projects from '@/components/sections/Projects.astro'
 import Skills from '@/components/sections/Skills.astro'
-import KeyboardManager from '@/components/KeyboardManager.astro'
 
 import { basics } from '@cv'
 const { name, label } = basics
@@ -24,8 +23,6 @@ const { name, label } = basics
     <Languages />
     <Skills />
   </main>
-
-  <KeyboardManager />
 </Layout>
 
 <style>
@@ -37,7 +34,9 @@ const { name, label } = basics
 
   @media (width <= 700px) {
     main {
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
   }
 </style>

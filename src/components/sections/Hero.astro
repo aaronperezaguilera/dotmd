@@ -1,12 +1,11 @@
 ---
 import { basics } from '@cv'
 import Section from '@/components/Section.astro'
-import Mail from '@/icons/Mail.astro'
+import Contact from '@/icons/Contact.astro'
 import Phone from '@/icons/Phone.astro'
 import X from '@/icons/X.astro'
 import LinkedIn from '@/icons/LinkedIn.astro'
 import GitHub from '@/icons/GitHub.astro'
-import Blog from '@/icons/Blog.astro'
 import WorldMap from '@/icons/WorldMap.astro'
 import type { SocialIcon } from '@/types'
 
@@ -16,8 +15,7 @@ const { city, region } = location
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
   LinkedIn,
-  X,
-  Blog
+  X
 }
 
 const linkedInfo = profiles.find(({ network }) => network === 'LinkedIn')
@@ -28,6 +26,12 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
 
 <Section>
   <div class='container'>
+    <figure>
+      <img
+        src={image}
+        alt={name}
+      />
+    </figure>
     <div class='info'>
       <h1>{name}</h1>
       <h2>{label}</h2>
@@ -47,7 +51,7 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
               target='_blank'
               rel='noopener noreferrer'
             >
-              <Mail />
+              <Contact />
             </a>
           )
         }
@@ -81,32 +85,28 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
         }
       </footer>
     </div>
-    <figure>
-      <img
-        src={image}
-        alt={name}
-      />
-    </figure>
+    
   </div>
 </Section>
 
 <style>
   .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 1rem;
   }
 
   .info {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    gap: 0.5rem;
-    padding-right: 32px;
+    gap: 1rem;
   }
 
   h1 {
     font-size: 2rem;
+    width: fit-content;
   }
 
   h2 {
@@ -119,8 +119,8 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
   img {
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    width: 200px;
-    border-radius: 16px;
+    width: 128px;
+    border-radius: 100%;
   }
 
   span {
@@ -136,7 +136,7 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
     color: #555;
     font-size: 0.65rem;
     display: flex;
-    gap: 4px;
+    gap: 24px;
     margin-top: 8px;
   }
 
@@ -145,17 +145,14 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #eee;
     padding: 4px;
     height: 32px;
     width: 32px;
-    border-radius: 6px;
     transition: all 0.3s ease;
   }
 
   footer a:hover {
-    background: #eee;
-    border: 1px solid #ddd;
+    color: #eee;
   }
 
   @media (width <= 700px) {

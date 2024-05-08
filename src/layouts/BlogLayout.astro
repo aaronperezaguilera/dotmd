@@ -1,0 +1,35 @@
+---
+import Post from '@/components/blog/Post.astro'
+import Layout from '@/layouts/Layout.astro'
+
+import { getCollection } from 'astro:content'
+const allPosts = await getCollection('blog')
+---
+
+<Layout title='Home'>
+  <main class='flex w-full'>
+    <div
+      class='bloglist sticky top-0 flex max-h-screen w-[450px] flex-col gap-6 overflow-y-scroll border-r border-r-neutral-800 p-6'
+    >
+      <header class='flex justify-between'>
+        <h1>Blog</h1>
+        <div>
+          <button> RSS </button>
+          <button> Filter </button>
+        </div>
+      </header>
+      <div class='flex flex-col gap-2'>
+        {allPosts.map((post) => <Post post={post} />)}
+      </div>
+    </div>
+    <div class='prose mx-auto w-full dark:prose-invert prose-p:text-pretty prose-img:rounded-xl'>
+      <slot />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .bloglist {
+    scrollbar-width: none;
+  }
+</style>

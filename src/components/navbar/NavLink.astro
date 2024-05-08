@@ -1,0 +1,12 @@
+---
+const { href, disabled } = Astro.props
+
+const isCurrentPage = Astro.url.pathname.split('/')[1] === href.split('/')[1]
+---
+
+<a
+  href={href}
+  class={`${isCurrentPage ? 'text-white' : 'text-neutral-600 hover:text-neutral-200'} ${disabled && 'pointer-events-none'} transition `}
+>
+  <slot />
+</a>

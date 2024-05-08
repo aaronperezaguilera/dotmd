@@ -1,0 +1,26 @@
+---
+const { post } = Astro.props
+
+const isCurrentPage = Astro.url.pathname.split('/')[2] === post.slug
+---
+
+<article
+  class={`${isCurrentPage && 'bg-neutral-700'} relative h-32 rounded-lg bg-neutral-800 transition hover:bg-neutral-700`}
+>
+  <a
+    href={`/blog/${post.slug}`}
+    class='absolute h-full w-full'
+  ></a>
+  <div class='flex h-full flex-col justify-between text-pretty p-4'>
+    {post.data.title}
+    <footer>
+      {
+        post.data.pubDate.toLocaleDateString('es-ES', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        })
+      }
+    </footer>
+  </div>
+</article>
