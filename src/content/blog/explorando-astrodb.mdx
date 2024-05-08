@@ -5,7 +5,7 @@ description: 'En este artículo exploraremos como hacer un contador de visitas p
 contentType: 'guia'
 author: 'Aaron'
 image:
-  url: '../../assets/images/explorando-astrodb/Hero.webp'
+  url: '/explorando-astrodb/Hero.webp'
   alt: 'Banner del artículo Exlorando Astro DB'
 tags: ['Astro', 'DB', 'Desarrollo web']
 ---
@@ -44,14 +44,14 @@ A continuación tenéis el ejemplo que utilizaremos en esta guía:
 import { defineDb, defineTable, column } from 'astro:db'
 
 const Posts = defineTable({
-	columns: {
-		slug: column.text({ primaryKey: true, unique: true }),
-		views: column.number({ default: 0 })
-	}
+  columns: {
+    slug: column.text({ primaryKey: true, unique: true }),
+    views: column.number({ default: 0 })
+  }
 })
 
 export default defineDb({
-	tables: { Posts }
+  tables: { Posts }
 })
 ```
 
@@ -73,7 +73,7 @@ También podemos rellenar el archivo semilla, que insertará los datos que quera
 import { db, Posts } from 'astro:db'
 
 export default async function () {
-	await db.insert(Posts).values([{ slug: 'primer-articulo', views: 256 }])
+  await db.insert(Posts).values([{ slug: 'primer-articulo', views: 256 }])
 }
 ```
 
@@ -108,48 +108,48 @@ export const prerender = false
 import { Posts, db, eq, sql } from 'astro:db'
 
 export async function GET({ request }) {
-	const slug = new URL(request.url).pathname.split('/').pop()
+  const slug = new URL(request.url).pathname.split('/').pop()
 
-	if (slug) {
-		const storedVisits = await db
-			.select({ views: Posts.views })
-			.from(Posts)
-			.where(eq(Posts.slug, slug))
+  if (slug) {
+    const storedVisits = await db
+      .select({ views: Posts.views })
+      .from(Posts)
+      .where(eq(Posts.slug, slug))
 
-		if (storedVisits.length > 0 && storedVisits[0]) {
-			return new Response(JSON.stringify(storedVisits[0].views), {
-				status: 200,
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
-		} else {
-			return new Response(JSON.stringify(0), {
-				status: 200,
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
-		}
-	}
+    if (storedVisits.length > 0 && storedVisits[0]) {
+      return new Response(JSON.stringify(storedVisits[0].views), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    } else {
+      return new Response(JSON.stringify(0), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+  }
 }
 
 export async function POST({ request }) {
-	const slug = new URL(request.url).pathname.split('/').pop()
+  const slug = new URL(request.url).pathname.split('/').pop()
 
-	if (slug) {
-		const visits = await db
-			.insert(Posts)
-			.values({ slug: slug, views: 1 })
-			.onConflictDoUpdate({ target: Posts.slug, set: { views: sql`${Posts.views} + 1` } })
+  if (slug) {
+    const visits = await db
+      .insert(Posts)
+      .values({ slug: slug, views: 1 })
+      .onConflictDoUpdate({ target: Posts.slug, set: { views: sql`${Posts.views} + 1` } })
 
-		return new Response(JSON.stringify(visits), {
-			status: 200,
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-	}
+    return new Response(JSON.stringify(visits), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  }
 }
 ```
 
@@ -181,27 +181,27 @@ Crearemos el componente en nuestro directorio de componentes. A continuación te
 import { useEffect, useState } from 'preact/hooks'
 
 export const Views = ({ slug, increment }: { slug: string; increment?: boolean }) => {
-	const [views, setViews] = useState()
+  const [views, setViews] = useState()
 
-	useEffect(() => {
-		if (increment) {
-			const incrementViews = async () => {
-				await fetch(`/api/${slug}`, {
-					method: 'POST'
-				})
-			}
-			incrementViews()
-		}
-		const fetchViews = async () => {
-			const visitsData = await fetch(`/api/${slug}`)
-			const visits = await visitsData.json()
+  useEffect(() => {
+    if (increment) {
+      const incrementViews = async () => {
+        await fetch(`/api/${slug}`, {
+          method: 'POST'
+        })
+      }
+      incrementViews()
+    }
+    const fetchViews = async () => {
+      const visitsData = await fetch(`/api/${slug}`)
+      const visits = await visitsData.json()
 
-			setViews(visits)
-		}
-		fetchViews()
-	}, [slug])
+      setViews(visits)
+    }
+    fetchViews()
+  }, [slug])
 
-	return <span>{views}</span>
+  return <span>{views}</span>
 }
 
 export default Views
@@ -333,54 +333,54 @@ Si te ha gustado, te animo a compartir este artículo en tus redes. ¡Muchas gra
 
 [^1]:
     <a
-    	href='https://docs.astro.build/en/guides/astro-db/'
-    	rel='noopener noreferrer'
-    	target='_blank'
+      href='https://docs.astro.build/en/guides/astro-db/'
+      rel='noopener noreferrer'
+      target='_blank'
     >
-    	Documentación de Astro DB
+      Documentación de Astro DB
     </a>
 
 [^2]:
     <a
-    	href='https://docs.astro.build/en/basics/rendering-modes/'
-    	rel='noopener noreferrer'
-    	target='_blank'
+      href='https://docs.astro.build/en/basics/rendering-modes/'
+      rel='noopener noreferrer'
+      target='_blank'
     >
-    	Modos de renderizado
+      Modos de renderizado
     </a>
 
 [^3]:
     <a
-    	href='https://docs.astro.build/en/guides/endpoints/'
-    	rel='noopener noreferrer'
-    	target='_blank'
+      href='https://docs.astro.build/en/guides/endpoints/'
+      rel='noopener noreferrer'
+      target='_blank'
     >
-    	Endpoints en Astro
+      Endpoints en Astro
     </a>
 
 [^4]:
     <a
-    	href='https://orm.drizzle.team/docs/overview'
-    	rel='noopener noreferrer'
-    	target='_blank'
+      href='https://orm.drizzle.team/docs/overview'
+      rel='noopener noreferrer'
+      target='_blank'
     >
-    	Drizzle ORM
+      Drizzle ORM
     </a>
 
 [^5]:
     <a
-    	href='https://docs.astro.build/en/concepts/islands/'
-    	rel='noopener noreferrer'
-    	target='_blank'
+      href='https://docs.astro.build/en/concepts/islands/'
+      rel='noopener noreferrer'
+      target='_blank'
     >
-    	Astro Islands
+      Astro Islands
     </a>
 
 [^6]:
     <a
-    	href='https://docs.astro.build/en/reference/directives-reference/'
-    	rel='noopener noreferrer'
-    	target='_blank'
+      href='https://docs.astro.build/en/reference/directives-reference/'
+      rel='noopener noreferrer'
+      target='_blank'
     >
-    	Directivas de maquetado
+      Directivas de maquetado
     </a>

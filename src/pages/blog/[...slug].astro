@@ -1,6 +1,5 @@
 ---
 import BlogLayout from '@/layouts/BlogLayout.astro'
-import { Image } from 'astro:assets'
 
 import { getCollection } from 'astro:content'
 // 1. Generate a new path for every collection entry
@@ -17,7 +16,7 @@ const { Content } = await entry.render()
 ---
 
 <BlogLayout>
-  <Image
+  <img
     src={entry.data.image.url}
     alt={entry.data.title}
   />
