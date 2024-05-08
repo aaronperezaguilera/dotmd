@@ -14,29 +14,12 @@ const { name, label } = basics
 ---
 
 <Layout title={`Portafolio de ${name} - ${label}`}>
-  <main>
+  <main class='animate-fade-up mx-auto mb-[65px] p-6'>
     <Hero />
     <About />
-    <Experience />
     <Education />
     <Projects />
     <Languages />
     <Skills />
   </main>
 </Layout>
-
-<style>
-  main {
-    padding: 4rem;
-    margin: auto;
-    width: 100%;
-  }
-
-  @media (width <= 700px) {
-    main {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-  }
-</style>

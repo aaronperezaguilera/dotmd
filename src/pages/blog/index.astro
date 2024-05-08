@@ -1,5 +1,36 @@
 ---
-import MdLayout from '@/layouts/BlogLayout.astro'
+import Post from '@/components/blog/Post.astro'
+import Layout from '@/layouts/Layout.astro'
+
+import { getCollection } from 'astro:content'
+const allPosts = await (
+  await getCollection('blog')
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
-<MdLayout title={`Blog`} />
+<Layout title='Home'>
+  <main class='flex w-full'>
+    <div
+      class='bloglist flex w-full flex-col gap-6 overflow-y-scroll border-r md:sticky md:top-0 md:max-h-screen md:w-[500px] dark:border-r-neutral-800'
+    >
+      <header
+        class='sticky top-0 z-10 flex h-[65px] items-center justify-between border-b px-6 dark:border-neutral-800 dark:bg-[#131313]'
+      >
+        <h1 class='text-xl'>Blog</h1>
+        <div>
+          <button> RSS </button>
+          <button> Filter </button>
+        </div>
+      </header>
+      <div class='flex flex-col gap-2 px-6'>
+        {allPosts.map((post) => <Post post={post} />)}
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .bloglist {
+    scrollbar-width: none;
+  }
+</style>

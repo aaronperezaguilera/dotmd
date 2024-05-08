@@ -3,27 +3,35 @@ import Post from '@/components/blog/Post.astro'
 import Layout from '@/layouts/Layout.astro'
 
 import { getCollection } from 'astro:content'
-const allPosts = await getCollection('blog')
+const allPosts = await (
+  await getCollection('blog')
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
 <Layout title='Home'>
   <main class='flex w-full'>
     <div
-      class='bloglist sticky top-0 flex max-h-screen w-[450px] flex-col gap-6 overflow-y-scroll border-r border-r-neutral-800 p-6'
+      class='bloglist sticky top-0 hidden max-h-screen min-w-[500px] flex-col gap-6 overflow-y-scroll border-r lg:flex dark:border-r-neutral-800'
     >
-      <header class='flex justify-between'>
-        <h1>Blog</h1>
+      <header
+        class='sticky top-0 z-10 flex h-[65px] items-center justify-between border-b px-6 dark:border-neutral-800 dark:bg-[#131313]'
+      >
+        <h1 class='text-xl'>Blog</h1>
         <div>
           <button> RSS </button>
           <button> Filter </button>
         </div>
       </header>
-      <div class='flex flex-col gap-2'>
+      <div class='flex flex-col gap-2 px-6'>
         {allPosts.map((post) => <Post post={post} />)}
       </div>
     </div>
-    <div class='prose mx-auto w-full dark:prose-invert prose-p:text-pretty prose-img:rounded-xl'>
-      <slot />
+    <div class='mx-auto mt-[65px] w-full px-6'>
+      <div
+        class='prose mx-auto w-full dark:prose-invert prose-p:text-pretty prose-pre:w-full prose-img:rounded-xl'
+      >
+        <slot />
+      </div>
     </div>
   </main>
 </Layout>

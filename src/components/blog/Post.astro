@@ -5,7 +5,7 @@ const isCurrentPage = Astro.url.pathname.split('/')[2] === post.slug
 ---
 
 <article
-  class={`${isCurrentPage && 'bg-neutral-700'} relative h-32 rounded-lg bg-neutral-800 transition hover:bg-neutral-700`}
+  class={`${isCurrentPage ? 'dark:bg-neutral-700 bg-neutral-200' : 'dark:bg-neutral-800 bg-neutral-100'} relative h-32 rounded-lg transition hover:bg-neutral-700`}
 >
   <a
     href={`/blog/${post.slug}`}

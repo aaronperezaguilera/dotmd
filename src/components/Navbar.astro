@@ -8,14 +8,22 @@ import NavLink from '@/components/navbar/NavLink.astro'
 ---
 
 <nav
-  class='fixed bottom-0 z-50 flex h-[65px] w-screen shrink-0 items-center justify-center border-r border-r-neutral-800 bg-[#131313] sm:sticky sm:top-0 sm:h-screen sm:w-[65px] sm:flex-col'
+  class='fixed bottom-0 z-50 flex h-[65px] w-screen shrink-0 items-center justify-center border-t bg-white sm:sticky sm:top-0 sm:h-screen sm:w-[65px] sm:flex-col sm:border-r dark:border-t-neutral-800 dark:bg-[#131313] dark:sm:border-r-neutral-800'
 >
-  <ul class='flex gap-6 sm:flex-col'>
+  <ul class='flex w-full items-center justify-between gap-6 px-6 sm:flex-col sm:justify-center'>
     <li>
-      <NavLink href='/'><Home /></NavLink>
+      <NavLink
+        href='/'
+        tooltip='Inicio'
+        ><Home /></NavLink
+      >
     </li>
     <li>
-      <NavLink href='/blog'><Blog /></NavLink>
+      <NavLink
+        href='/blog'
+        tooltip='Blog'
+        ><Blog /></NavLink
+      >
     </li>
     <!--
         <li>
@@ -24,6 +32,7 @@ import NavLink from '@/components/navbar/NavLink.astro'
     <li>
       <NavLink
         href='/stack'
+        tooltip='Stack'
         disabled
         ><Stack /></NavLink
       >
@@ -35,6 +44,7 @@ import NavLink from '@/components/navbar/NavLink.astro'
     <li>
       <NavLink
         href='/contacto'
+        tooltip='Contacto'
         disabled
         ><Contact /></NavLink
       >
@@ -42,6 +52,7 @@ import NavLink from '@/components/navbar/NavLink.astro'
     <li>
       <NavLink
         href='/cmd'
+        tooltip='CmdK'
         disabled
         ><Cmd /></NavLink
       >

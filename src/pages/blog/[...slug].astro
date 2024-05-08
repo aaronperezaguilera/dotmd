@@ -1,5 +1,6 @@
 ---
-import MdLayout from '@/layouts/BlogLayout.astro'
+import BlogLayout from '@/layouts/BlogLayout.astro'
+import { Image } from 'astro:assets'
 
 import { getCollection } from 'astro:content'
 // 1. Generate a new path for every collection entry
@@ -15,7 +16,11 @@ const { entry } = Astro.props
 const { Content } = await entry.render()
 ---
 
-<MdLayout>
+<BlogLayout>
+  <Image
+    src={entry.data.image.url}
+    alt={entry.data.title}
+  />
   <h1>{entry.data.title}</h1>
   <Content />
-</MdLayout>
+</BlogLayout>
