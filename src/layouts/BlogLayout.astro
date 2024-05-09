@@ -12,7 +12,8 @@ const allPosts = await (
 <Layout title='Home'>
   <main class='flex w-full'>
     <div
-      class='bloglist sticky top-0 hidden max-h-screen min-h-screen min-w-[500px] flex-col gap-6 overflow-y-scroll border-r lg:flex dark:border-r-neutral-800'
+      class='bloglist sticky top-0 hidden max-h-screen min-h-screen min-w-[500px] max-w-[500px] flex-col gap-6 overflow-y-scroll border-r lg:flex dark:border-r-neutral-800'
+      id='blog-list'
     >
       <header
         class='sticky top-0 z-10 flex h-[65px] items-center justify-between border-b p-6 dark:border-neutral-800 dark:bg-[#131313]'
@@ -35,12 +36,10 @@ const allPosts = await (
         >
       </footer>
     </div>
-    <div class='m-6 w-full rounded-lg border border-neutral-800 px-6 py-[65px]'>
-      <div
-        class='prose mx-auto w-full dark:prose-invert prose-p:text-pretty prose-pre:w-full prose-img:rounded-xl'
-      >
-        <slot />
-      </div>
+    <div
+      class='prose mx-auto w-full p-6 dark:prose-invert prose-p:text-pretty prose-pre:w-full prose-img:rounded-xl'
+    >
+      <slot />
     </div>
   </main>
 </Layout>
@@ -50,3 +49,14 @@ const allPosts = await (
     scrollbar-width: none;
   }
 </style>
+
+<script is:inline>
+  window.addEventListener('click', function () {
+    const scrollPosition = document.getElementById('blog-list').scrollTop
+    sessionStorage.setItem('scrollPosition', scrollPosition)
+  })
+  document.addEventListener('astro:page-load', function () {
+    const savedScrollPosition = sessionStorage.getItem('scrollPosition')
+    document.getElementById('blog-list').scrollTop = savedScrollPosition
+  })
+</script>

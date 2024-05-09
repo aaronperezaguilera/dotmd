@@ -1,0 +1,14 @@
+---
+const { href, primary, secondary, link } = Astro.props
+---
+
+<a
+  href={href}
+  class={`${
+    (primary && 'text-black bg-white hover:bg-neutral-200') ||
+    (secondary && 'text-white bg-[#131313] border border-neutral-800 hover:bg-neutral-900') ||
+    (link && 'text-blue-500')
+  } inline-block px-4 py-2 rounded-lg transition`}
+>
+  <slot />
+</a>

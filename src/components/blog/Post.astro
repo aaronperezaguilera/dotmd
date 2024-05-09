@@ -5,15 +5,16 @@ const isCurrentPage = Astro.url.pathname.split('/')[2] === post.slug
 ---
 
 <article
-  class={`${isCurrentPage ? 'dark:bg-neutral-700 bg-neutral-200' : 'dark:bg-neutral-800 bg-neutral-100'} relative h-32 rounded-lg transition hover:bg-neutral-700`}
+  class={`${isCurrentPage ? 'dark:bg-neutral-700 bg-neutral-200' : 'dark:bg-neutral-800 bg-neutral-100'} relative rounded-lg transition hover:bg-neutral-700`}
 >
   <a
     href={`/blog/${post.slug}`}
     class='absolute h-full w-full'
   ></a>
-  <div class='flex h-full flex-col justify-between text-pretty p-4'>
-    {post.data.title}
-    <footer>
+  <div class='flex flex-col justify-between gap-4 text-pretty p-4'>
+    <h2>{post.data.title}</h2>
+    <p class='line-clamp-2 text-sm text-neutral-400'>{post.data.description}</p>
+    <footer class='flex justify-between text-sm text-neutral-300'>
       {
         post.data.pubDate.toLocaleDateString('es-ES', {
           day: 'numeric',
@@ -21,6 +22,7 @@ const isCurrentPage = Astro.url.pathname.split('/')[2] === post.slug
           year: 'numeric'
         })
       }
+      <span>90 Views</span>
     </footer>
   </div>
 </article>
