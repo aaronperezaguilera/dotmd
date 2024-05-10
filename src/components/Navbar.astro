@@ -5,6 +5,7 @@ import Stack from '@/icons/Stack.astro'
 import Contact from '@/icons/Contact.astro'
 import Cmd from '@/icons/Cmd.astro'
 import NavLink from '@/components/navbar/NavLink.astro'
+import CmdK from './navbar/CmdK.astro'
 ---
 
 <nav
@@ -50,12 +51,7 @@ import NavLink from '@/components/navbar/NavLink.astro'
       >
     </li>
     <li>
-      <NavLink
-        href='/cmd'
-        tooltip='CmdK'
-        disabled
-        ><Cmd /></NavLink
-      >
+      <CmdK />
     </li>
   </ul>
 </nav>

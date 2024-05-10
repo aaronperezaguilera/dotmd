@@ -17,11 +17,6 @@ const SOCIAL_ICONS: SocialIcon = {
   LinkedIn,
   X
 }
-
-const linkedInfo = profiles.find(({ network }) => network === 'LinkedIn')
-const linkedUrl = linkedInfo?.url
-
-const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean).join(' • ')
 ---
 
 <Section>
@@ -39,9 +34,6 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
         <WorldMap />
         {city}, {region}
       </span>
-      <footer class='print'>
-        {printInfo}
-      </footer>
       <footer class='no-print'>
         {
           email && (
@@ -50,6 +42,8 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
               title={`Enviar un correo electrónico a ${name} al correo ${email}`}
               target='_blank'
               rel='noopener noreferrer'
+              data-tippy-content='Correo electrónico'
+              data-tippy-placement='bottom'
             >
               <Contact />
             </a>
@@ -77,6 +71,8 @@ const printInfo = [email, phone, linkedUrl, 'https://dotmd.dev'].filter(Boolean)
                 title={`Visitar el perfil de ${name} en ${network}`}
                 target='_blank'
                 rel='noopener noreferrer'
+                data-tippy-content={network}
+                data-tippy-placement='bottom'
               >
                 <Icon />
               </a>

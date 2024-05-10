@@ -17,7 +17,7 @@ const { image, summary, url } = basics
 <!doctype html>
 <html
   lang='es'
-  class='relative scroll-p-8 scroll-smooth dark:bg-[#131313] dark:text-white'
+  class='relative scroll-p-8 scroll-smooth antialiased dark:bg-[#131313] dark:text-white'
 >
   <head>
     <meta charset='UTF-8' />
@@ -92,5 +92,17 @@ const { image, summary, url } = basics
     <Navbar />
     <slot />
     <CommandPalette />
+    <script>
+      import tippy from 'tippy.js'
+      import 'tippy.js/dist/tippy.css'
+      import 'tippy.js/animations/shift-away.css'
+
+      document.addEventListener('astro:page-load', () => {
+        tippy('[data-tippy-content]', {
+          animation: 'shift-away',
+          placement: 'right'
+        })
+      })
+    </script>
   </body>
 </html>
