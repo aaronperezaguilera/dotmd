@@ -1,0 +1,19 @@
+---
+import Filter from '@/icons/Filter.astro'
+import Rss from '@/icons/Rss.astro'
+---
+
+<header class='flex items-center justify-between pt-6 md:pt-[65px]'>
+  <h1 class='text-xl'>Blog</h1>
+  <nav>
+    <ul class='flex gap-6 text-sm'>
+      <li><a href='/blog'> Todos los artículos </a></li>
+      <li><a href='/blog/guias'> Guías </a></li>
+      <li><a href='/blog/opiniones'> Opiniones </a></li>
+    </ul>
+  </nav>
+  <div class='flex items-center gap-2'>
+    <a href='/rss.xml'> <Rss /> </a>
+    <Filter />
+  </div>
+</header>

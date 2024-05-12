@@ -13,7 +13,8 @@ const blogCollection = defineCollection({
         url: z.string(),
         alt: z.string()
       }),
-      tags: z.array(z.string())
+      tags: z.array(z.string()),
+      fixed: z.boolean()
     })
 })
 // Export a single `collections` object to register your collection(s)

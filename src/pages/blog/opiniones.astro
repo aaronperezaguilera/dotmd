@@ -7,13 +7,13 @@ import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 const allPosts = await (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .filter((post) => post.data.fixed !== true)
+  .filter((post) => post.data.fixed !== true && post.data.contentType === 'opinion')
 
 const fixedPost = await (
   await getCollection('blog')
 )
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .filter((post) => post.data.fixed === true)
+  .filter((post) => post.data.fixed === true && post.data.contentType === 'opinion')
   .slice(0, 1)
 ---
 
@@ -30,7 +30,7 @@ const fixedPost = await (
       >
         <BlogHeader />
         <div class='mb-16 flex flex-col gap-2 sm:mb-0'>
-          <Post post={fixedPost[0]} />
+          {fixedPost[0] && <Post post={fixedPost[0]} />}
           {allPosts.map((post) => <Post post={post} />)}
         </div>
       </section>
