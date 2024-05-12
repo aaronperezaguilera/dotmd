@@ -3,25 +3,33 @@ import Item from '@/components/sections/stack/Item.astro'
 ---
 
 <section class='relative flex w-full flex-col'>
-  <header>
-    <h2 class='text-secondary lg:absolute lg:-left-24 lg:flex'>Hardware</h2>
+  <header class='mb-6 lg:mb-0'>
+    <h2 class='text-secondary lg:absolute lg:-left-28 lg:flex'>Hardware</h2>
   </header>
-  <div class='grid grid-cols-2 gap-2'>
+  <div class='grid gap-2 sm:grid-cols-2'>
     <Item
-      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
+      img='/stack/Mac.png'
       title='Mac Mini'
+      tag='Ordenador'
+      href='https://amzn.to/3QI7M1T'
     />
     <Item
-      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
-      title='Mac Mini'
+      img='/stack/Asus.png'
+      title='ASUS ProArt Display PA278CGV 27"'
+      tag='Monitor'
+      href='https://amzn.to/3yfTYW1'
     />
     <Item
-      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
-      title='Mac Mini'
+      img='/stack/MXMaster.webp'
+      title='Logitech MX Master 3S'
+      tag='Ratón'
+      href='https://amzn.to/4bbFXXR'
     />
     <Item
-      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
-      title='Mac Mini'
+      img='/stack/MXMechanical.webp'
+      title='Logitech MX Mechanical Mini'
+      tag='Teclado'
+      href='https://amzn.to/3UVjloL'
     />
   </div>
 </section>

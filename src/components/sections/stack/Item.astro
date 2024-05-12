@@ -1,25 +1,49 @@
 ---
-const { img, title } = Astro.props
+const { img, title, tag, type, href } = Astro.props
+import type { SoftwareIcon } from '@/types'
+
+import Arc from '@/icons/Arc.astro'
+import Figma from '@/icons/Figma.astro'
+import Music from '@/icons/Music.astro'
+import VSCode from '@/icons/VSCode.astro'
+import Warp from '@/icons/Warp.astro'
+import Discord from '@/icons/Discord.astro'
+
+const SOFTWARE_ICONS: SoftwareIcon = {
+  Arc,
+  VSCode,
+  Warp,
+  Figma,
+  Music,
+  Discord
+}
+const Icon = SOFTWARE_ICONS[img]
 ---
 
 <article
-  class='relative flex flex-col gap-4 rounded-2xl bg-[#f8f8f8] p-2 transition dark:bg-secondary'
+  class='relative flex flex-col gap-8 rounded-2xl bg-[#f8f8f8] p-2 transition hover:bg-hover dark:bg-secondary'
 >
   <a
-    href='/stack'
+    href={href}
     class='absolute left-0 top-0 h-full w-full rounded-lg'
   ></a>
-  <div>
-    <img
-      src={img}
-      alt={title}
-      class='aspect-square w-full object-contain p-[12px]'
-    />
+  <div class={`${type === 'software' ? 'h-32' : ''} flex w-full h-full justify-center pt-6`}>
+    {
+      type === 'software' ? (
+        <Icon />
+      ) : (
+        <img
+          src={img}
+          alt={title}
+          class='w-56 object-contain'
+        />
+      )
+    }
   </div>
   <div class='flex flex-col gap-2 p-2'>
     <span
       class='w-fit rounded-lg border border-neutral-300 px-2 py-1 text-xs uppercase tracking-wide text-secondary dark:border-primary'
-      >Buscador</span
+      >{tag}</span
     >
     <h3 class='text-lg'>{title}</h3>
   </div>
