@@ -1,17 +1,12 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
 import '@fontsource/poppins'
 
 import Navbar from '@/components/Navbar.astro'
 import SEO from '@/components/SEO.astro'
 
-import { basics } from '@cv'
-
 interface Props {
   title: string
 }
-
-const { image, summary, url } = basics
 
 interface Props {
   title: string
@@ -33,7 +28,6 @@ const { title, description, img } = Astro.props
       description={description}
       img={img}
     />
-    <ViewTransitions />
   </head>
   <body class='flex'>
     <Navbar />

@@ -4,10 +4,7 @@ import Fixed from '@/icons/Fixed.astro'
 const { post } = Astro.props
 ---
 
-<article
-  class='relative rounded-lg bg-[#f8f8f8] transition dark:bg-secondary dark:hover:bg-hover'
-  transition:name={post.slug}
->
+<article class='relative rounded-lg bg-[#f8f8f8] transition dark:bg-secondary dark:hover:bg-hover'>
   <a
     href={`/blog/${post.slug}`}
     class='absolute h-full w-full'
