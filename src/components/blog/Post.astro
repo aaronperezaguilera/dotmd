@@ -6,7 +6,9 @@ const { post } = Astro.props
   <a
     href={`/blog/${post.slug}`}
     class='absolute h-full w-full'
-  ></a>
+  >
+    <span class='sr-only'>{post.data.title}</span></a
+  >
   <div class='flex flex-col justify-between gap-4 text-pretty p-4'>
     <h2>{post.data.title}</h2>
     <p class='line-clamp-2 text-sm text-neutral-400'>{post.data.description}</p>

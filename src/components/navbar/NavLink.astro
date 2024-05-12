@@ -9,5 +9,5 @@ const isCurrentPage = Astro.url.pathname.split('/')[1] === href.split('/')[1]
   data-tippy-content={tooltip}
   class={`${isCurrentPage ? 'dark:text-white dark:fill-white' : ' dark:fill-primary fill-white text-neutral-500 hover:text-neutral-800 dark:text-neutral-600 dark:hover:text-neutral-200'} transition `}
 >
-  <slot />
+  <slot /><span class='sr-only'>{tooltip}</span>
 </a>
