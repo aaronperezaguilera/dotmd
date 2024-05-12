@@ -18,7 +18,8 @@ export default {
       },
       textColor: {
         primary: '#ffffff',
-        secondary: '#a0a0a0'
+        secondary: '#a0a0a0',
+        prose: '#d1d5db'
       },
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans]

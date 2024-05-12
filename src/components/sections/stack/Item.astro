@@ -3,7 +3,7 @@ const { img, title } = Astro.props
 ---
 
 <article
-  class='dark:bg-secondary relative flex flex-col gap-4 rounded-2xl bg-[#f8f8f8] p-2 transition'
+  class='relative flex flex-col gap-4 rounded-2xl bg-[#f8f8f8] p-2 transition dark:bg-secondary'
 >
   <a
     href='/stack'
@@ -18,7 +18,7 @@ const { img, title } = Astro.props
   </div>
   <div class='flex flex-col gap-2 p-2'>
     <span
-      class='dark:border-primary text-secondary w-fit rounded-lg border border-neutral-300 p-1 text-xs uppercase'
+      class='w-fit rounded-lg border border-neutral-300 px-2 py-1 text-xs uppercase tracking-wide text-secondary dark:border-primary'
       >Buscador</span
     >
     <h3 class='text-lg'>{title}</h3>

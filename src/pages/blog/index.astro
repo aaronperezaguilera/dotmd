@@ -1,6 +1,8 @@
 ---
 import Post from '@/components/blog/Post.astro'
 import Bmc from '@/icons/Bmc.astro'
+import Filter from '@/icons/Filter.astro'
+import Rss from '@/icons/Rss.astro'
 import Layout from '@/layouts/Layout.astro'
 
 import { getCollection } from 'astro:content'
@@ -18,9 +20,11 @@ const allPosts = await (
       >
         <header class='flex items-center justify-between pt-6 md:pt-[65px]'>
           <h1 class='text-xl'>Blog</h1>
-          <div>
-            <button> RSS </button>
-            <button> Filter </button>
+          <div class='flex items-center gap-2'>
+            <a href=''> <Rss /> </a>
+            <button class=''>
+              <Filter />
+            </button>
           </div>
         </header>
         <div class='mb-16 flex flex-col gap-2 sm:mb-0'>
@@ -29,11 +33,11 @@ const allPosts = await (
       </section>
     </div>
     <footer
-      class='dark:bg-primary/80 sticky bottom-[65px] h-[65px] w-full backdrop-blur md:bottom-0'
+      class='sticky bottom-[65px] h-[65px] w-full bg-white/80 backdrop-blur md:bottom-0 dark:bg-primary/80'
     >
       <a
         href='/'
-        class='dark:border-t-primary mx-auto flex h-full w-full max-w-[65ch] items-center justify-center gap-2 border-t'
+        class='mx-auto flex h-full w-full max-w-[65ch] items-center justify-center gap-2 border-t dark:border-t-primary'
       >
         <Bmc /> <span>Invítame a un café</span></a
       >

@@ -2,7 +2,9 @@
 const { post } = Astro.props
 ---
 
-<article class='dark:bg-secondary hover:bg-hover relative rounded-lg bg-neutral-100 transition'>
+<article
+  class='relative rounded-lg bg-neutral-100 transition dark:bg-secondary dark:hover:bg-hover'
+>
   <a
     href={`/blog/${post.slug}`}
     class='absolute h-full w-full'

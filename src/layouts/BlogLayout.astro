@@ -1,11 +1,17 @@
 ---
+import Back from '@/icons/Back.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout title='Home'>
   <main class='flex w-full flex-col gap-6 px-6'>
     <header class='mx-auto w-full max-w-[65ch] pt-6 md:pt-[65px]'>
-      <a href='/blog'>Back to blog</a>
+      <a
+        href='/blog'
+        class='flex items-center'
+      >
+        <Back />Volver al blog</a
+      >
     </header>
     <slot />
   </main>
