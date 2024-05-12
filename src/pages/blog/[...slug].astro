@@ -34,8 +34,61 @@ const { Content } = await entry.render()
     />
   </header>
   <section
-    class='prose mx-auto mt-6 w-full dark:prose-invert prose-p:text-pretty prose-pre:w-full prose-img:rounded-xl'
+    class='sl-markdown-content prose mx-auto mb-[65px] mt-6 w-full dark:prose-invert prose-p:text-pretty prose-pre:w-full prose-img:rounded-xl'
   >
     <Content />
   </section>
 </BlogLayout>
+<style>
+  /* Custom styles for heading anchor links. */
+  .sl-markdown-content :global(.heading-wrapper) {
+    --icon-size: 1.4em;
+    --icon-spacing: 0.5em;
+    line-height: var(--sl-line-height-headings);
+    display: flex;
+  }
+
+  .sl-markdown-content :global(.heading-wrapper > :first-child) {
+    margin: 0;
+  }
+
+  .sl-markdown-content :global(.anchor-link) {
+    color: var(--sl-color-gray-3);
+    display: flex;
+    align-items: center;
+    margin-left: 0.75em;
+  }
+  .sl-markdown-content :global(.anchor-link:hover),
+  .sl-markdown-content :global(.anchor-link:focus) {
+    color: var(--sl-color-text-accent);
+  }
+  .sl-markdown-content :global(.heading-wrapper svg) {
+    display: inline;
+    width: var(--icon-size);
+  }
+
+  @media (hover: hover) {
+    .sl-markdown-content :global(.anchor-link) {
+      opacity: 0;
+    }
+  }
+  .sl-markdown-content :global(.heading-wrapper:hover > .anchor-link),
+  .sl-markdown-content :global(.anchor-link:focus) {
+    opacity: 1;
+  }
+
+  /* Float anchor links to the left of headings on larger screens. */
+  @media (min-width: 95em) {
+    .sl-markdown-content :global(.heading-wrapper) {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: var(--icon-spacing);
+      margin-inline-start: calc(-1 * (var(--icon-size) + var(--icon-spacing)));
+    }
+    .sl-markdown-content :global(.heading-wrapper > :first-child),
+    .sl-markdown-content :global(.anchor-link) {
+      margin: 0;
+    }
+  }
+</style>
