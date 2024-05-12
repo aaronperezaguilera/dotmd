@@ -26,6 +26,11 @@
         "url": "https://x.com/dotmdx"
       },
       {
+        "network": "Twitch",
+        "username": "dotmdx",
+        "url": "https://www.twitch.tv/dotmdx"
+      },
+      {
         "network": "GitHub",
         "username": "aaronperezaguilera",
         "url": "https://github.com/aaronperezaguilera"

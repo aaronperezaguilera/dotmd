@@ -10,32 +10,34 @@ const allPosts = await (
 ---
 
 <Layout title='Home'>
-  <main class='flex w-full px-6'>
-    <section
-      class='mx-auto flex w-full max-w-[65ch] flex-col gap-6 dark:border-r-neutral-800'
-      id='blog-list'
-    >
-      <header class='flex items-center justify-between pt-6 md:pt-[65px]'>
-        <h1 class='text-xl'>Blog</h1>
-        <div>
-          <button> RSS </button>
-          <button> Filter </button>
-        </div>
-      </header>
-      <div class='flex flex-col gap-2'>
-        {allPosts.map((post) => <Post post={post} />)}
-      </div>
-      <footer
-        class='sticky bottom-[65px] w-full border-t border-t-neutral-800 bg-[#131313] sm:bottom-0'
+  <main class='w-full'>
+    <div class='w-full px-6 pb-6'>
+      <section
+        class='mx-auto flex w-full max-w-[65ch] flex-col gap-6 dark:border-r-neutral-800'
+        id='blog-list'
       >
-        <a
-          href='/'
-          class='flex h-full w-full justify-center gap-2 py-6'
-        >
-          <Bmc /> <span>Invítame a un café</span></a
-        >
-      </footer>
-    </section>
+        <header class='flex items-center justify-between pt-6 md:pt-[65px]'>
+          <h1 class='text-xl'>Blog</h1>
+          <div>
+            <button> RSS </button>
+            <button> Filter </button>
+          </div>
+        </header>
+        <div class='mb-16 flex flex-col gap-2 sm:mb-0'>
+          {allPosts.map((post) => <Post post={post} />)}
+        </div>
+      </section>
+    </div>
+    <footer
+      class='dark:bg-primary/80 sticky bottom-[65px] h-[65px] w-full backdrop-blur md:bottom-0'
+    >
+      <a
+        href='/'
+        class='dark:border-t-primary mx-auto flex h-full w-full max-w-[65ch] items-center justify-center gap-2 border-t'
+      >
+        <Bmc /> <span>Invítame a un café</span></a
+      >
+    </footer>
   </main>
 </Layout>
 
@@ -44,14 +46,3 @@ const allPosts = await (
     scrollbar-width: none;
   }
 </style>
-
-<script is:inline>
-  window.addEventListener('click', function () {
-    const scrollPosition = document.getElementById('blog-list').scrollTop
-    sessionStorage.setItem('scrollPosition', scrollPosition)
-  })
-  document.addEventListener('astro:page-load', function () {
-    const savedScrollPosition = sessionStorage.getItem('scrollPosition')
-    document.getElementById('blog-list').scrollTop = savedScrollPosition
-  })
-</script>

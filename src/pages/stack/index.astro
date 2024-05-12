@@ -8,9 +8,11 @@ const { name, label } = basics
 ---
 
 <Layout title={`Portafolio de ${name} - ${label}`}>
-  <main class='mx-auto flex w-full max-w-[65ch] flex-col gap-8 pt-16'>
-    <h1 class='text-4xl font-semibold'>Stack</h1>
-    <Hardware />
-    <Software />
+  <main class='w-full px-6 pb-20 pt-6 md:pt-16'>
+    <div class='mx-auto flex max-w-[65ch] flex-col gap-8'>
+      <h1 class='text-4xl font-semibold'>Stack</h1>
+      <Hardware />
+      <Software />
+    </div>
   </main>
 </Layout>

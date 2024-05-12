@@ -1,12 +1,8 @@
 ---
 const { post } = Astro.props
-
-const isCurrentPage = Astro.url.pathname.split('/')[2] === post.slug
 ---
 
-<article
-  class={`${isCurrentPage ? 'dark:bg-neutral-700 bg-neutral-200' : 'dark:bg-neutral-800 bg-neutral-100'} relative rounded-lg transition hover:bg-neutral-700`}
->
+<article class='dark:bg-secondary hover:bg-hover relative rounded-lg bg-neutral-100 transition'>
   <a
     href={`/blog/${post.slug}`}
     class='absolute h-full w-full'

@@ -23,6 +23,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.0(astro@4.3.2(@types/node@20.12.11)(typescript@5.3.3))(tailwindcss@3.4.3)
+      '@fontsource/poppins':
+        specifier: ^5.0.14
+        version: 5.0.14
       '@types/react':
         specifier: ^18.3.1
         version: 18.3.1
@@ -585,6 +588,9 @@ packages:
   '@eslint/js@9.2.0':
     resolution: {integrity: sha512-ESiIudvhoYni+MdsI8oD7skpprZ89qKocwRM2KEvhhBJ9nl5MRh7BXU5GTod7Mdygq+AUl+QzId6iWJKR/wABA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fontsource/poppins@5.0.14':
+    resolution: {integrity: sha512-nmM1zpPo3Uh4JcGAVSQuWaZNYh2FbbwWhZ5t6hRaynmJaNTBW85d3nEh9zMmzI0HX7X5xqQVdRHeDatKpOGsnA==}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -4362,6 +4368,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@9.2.0': {}
+
+  '@fontsource/poppins@5.0.14': {}
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:

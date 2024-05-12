@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions'
 import { CommandPalette } from '@/components/CommandPalette.jsx'
+import '@fontsource/poppins'
 
 import Navbar from '@/components/Navbar.astro'
 import { basics } from '@cv'
@@ -17,7 +18,7 @@ const { image, summary, url } = basics
 <!doctype html>
 <html
   lang='es'
-  class='relative scroll-p-8 scroll-smooth antialiased dark:bg-[#131313] dark:text-white'
+  class='dark:bg-primary relative scroll-p-8 scroll-smooth antialiased dark:text-white'
 >
   <head>
     <meta charset='UTF-8' />
@@ -94,7 +95,7 @@ const { image, summary, url } = basics
     <meta
       name='theme-color'
       media='(prefers-color-scheme: dark)'
-      content='#131313'
+      content='#232323'
     />
     <ViewTransitions />
   </head>

@@ -1,0 +1,26 @@
+---
+const { img, title } = Astro.props
+---
+
+<article
+  class='dark:bg-secondary relative flex flex-col gap-4 rounded-2xl bg-[#f8f8f8] p-2 transition'
+>
+  <a
+    href='/stack'
+    class='absolute left-0 top-0 h-full w-full rounded-lg'
+  ></a>
+  <div>
+    <img
+      src={img}
+      alt={title}
+      class='aspect-square w-full object-contain p-[12px]'
+    />
+  </div>
+  <div class='flex flex-col gap-2 p-2'>
+    <span
+      class='dark:border-primary text-secondary w-fit rounded-lg border border-neutral-300 p-1 text-xs uppercase'
+      >Buscador</span
+    >
+    <h3 class='text-lg'>{title}</h3>
+  </div>
+</article>

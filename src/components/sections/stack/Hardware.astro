@@ -1,27 +1,27 @@
-<section class='flex w-full flex-col gap-8'>
+---
+import Item from '@/components/sections/stack/Item.astro'
+---
+
+<section class='relative flex w-full flex-col'>
   <header>
-    <h2 class='text-3xl font-semibold'>Hardware</h2>
+    <h2 class='text-secondary -left-24 hidden lg:absolute lg:flex'>Hardware</h2>
   </header>
-  <div class='grid grid-cols-3 gap-2'>
-    <article class='relative flex flex-col gap-4 rounded-2xl bg-neutral-800 p-2 transition'>
-      <a
-        href='/stack'
-        class='absolute left-0 top-0 h-full w-full rounded-lg'
-      ></a>
-      <div>
-        <img
-          src='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
-          alt='Mac Mini'
-          class='aspect-square w-full object-contain'
-        />
-      </div>
-      <div class='flex flex-col gap-2 p-2'>
-        <span
-          class='w-fit rounded-lg border border-neutral-700 p-1 text-xs uppercase text-neutral-400'
-          >Ordenador</span
-        >
-        <h3 class='text-lg'>Mac Mini</h3>
-      </div>
-    </article>
+  <div class='grid grid-cols-2 gap-2'>
+    <Item
+      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
+      title='Mac Mini'
+    />
+    <Item
+      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
+      title='Mac Mini'
+    />
+    <Item
+      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
+      title='Mac Mini'
+    />
+    <Item
+      img='https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111894_macminihero.png'
+      title='Mac Mini'
+    />
   </div>
 </section>
