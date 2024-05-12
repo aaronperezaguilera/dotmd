@@ -15,10 +15,10 @@ const { entry } = Astro.props
 const { Content } = await entry.render()
 ---
 
-<BlogLayout>
+<BlogLayout frontmatter={entry.data}>
   <header class='mx-auto max-w-[65ch]'>
     <h1 class='text-pretty text-2xl'>{entry.data.title}</h1>
-    <small class='text-secondary text-sm'
+    <small class='text-sm text-secondary'
       >{
         entry.data.pubDate.toLocaleDateString('es-ES', {
           day: 'numeric',

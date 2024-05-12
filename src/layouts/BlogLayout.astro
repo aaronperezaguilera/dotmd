@@ -1,9 +1,15 @@
 ---
-import Back from '@/icons/Back.astro'
+const { frontmatter } = Astro.props
+
 import Layout from '@/layouts/Layout.astro'
+import Back from '@/icons/Back.astro'
 ---
 
-<Layout title='Home'>
+<Layout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  img={frontmatter.image.url}
+>
   <main class='flex w-full flex-col gap-6 px-6'>
     <header class='mx-auto w-full max-w-[65ch] pt-6 md:pt-[65px]'>
       <a

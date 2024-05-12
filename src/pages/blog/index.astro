@@ -11,7 +11,11 @@ const allPosts = await (
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
-<Layout title='Home'>
+<Layout
+  title='Blog'
+  description='Blog de Aaron'
+  img='/me.webp'
+>
   <main class='w-full'>
     <div class='w-full px-6 pb-6'>
       <section

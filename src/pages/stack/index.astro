@@ -2,17 +2,18 @@
 import Layout from '@/layouts/Layout.astro'
 import Hardware from '@/components/sections/stack/Hardware.astro'
 import Software from '@/components/sections/stack/Software.astro'
-
-import { basics } from '@cv'
-const { name, label } = basics
 ---
 
-<Layout title={`Portafolio de ${name} - ${label}`}>
+<Layout
+  title='Stack'
+  description='Echa un vistazo a las aplicaciones y dispositivos que utilizo.'
+  img='/me.webp'
+>
   <main class='w-full px-6 pb-20 pt-6 md:pt-16'>
     <div class='mx-auto flex max-w-[65ch] flex-col gap-6'>
       <header class='flex flex-col gap-2'>
         <h1 class='text-xl'>Stack</h1>
-        <p class='dark:text-prose text-pretty'>
+        <p class='text-pretty dark:text-prose'>
           Echa un vistazo a las aplicaciones y dispositivos que utilizo.
         </p>
       </header>
