@@ -1,10 +1,16 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import Hardware from '@/components/sections/stack/Hardware.astro'
+import Software from '@/components/sections/stack/Software.astro'
 
 import { basics } from '@cv'
 const { name, label } = basics
 ---
 
 <Layout title={`Portafolio de ${name} - ${label}`}>
-  <main>Stack</main>
+  <main class='mx-auto flex w-full max-w-[65ch] flex-col gap-8 pt-16'>
+    <h1 class='text-4xl font-semibold'>Stack</h1>
+    <Hardware />
+    <Software />
+  </main>
 </Layout>

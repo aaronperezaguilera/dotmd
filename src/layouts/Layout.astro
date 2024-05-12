@@ -86,6 +86,16 @@ const { image, summary, url } = basics
       name='twitter:image'
       content={image}
     />
+    <meta
+      name='theme-color'
+      media='(prefers-color-scheme: light)'
+      content='white'
+    />
+    <meta
+      name='theme-color'
+      media='(prefers-color-scheme: dark)'
+      content='#131313'
+    />
     <ViewTransitions />
   </head>
   <body class='flex'>
@@ -100,7 +110,8 @@ const { image, summary, url } = basics
       document.addEventListener('astro:page-load', () => {
         tippy('[data-tippy-content]', {
           animation: 'shift-away',
-          placement: 'right'
+          placement: 'right',
+          touch: false
         })
       })
     </script>

@@ -16,10 +16,26 @@ const { Content } = await entry.render()
 ---
 
 <BlogLayout>
-  <img
-    src={entry.data.image.url}
-    alt={entry.data.title}
-  />
-  <h1>{entry.data.title}</h1>
-  <Content />
+  <header class='mx-auto max-w-[65ch]'>
+    <h1 class='text-2xl'>{entry.data.title}</h1>
+    <small
+      >{
+        entry.data.pubDate.toLocaleDateString('es-ES', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        })
+      }</small
+    >
+    <img
+      src={entry.data.image.url}
+      alt={entry.data.title}
+      class='mt-6 w-full rounded-lg'
+    />
+  </header>
+  <section
+    class='prose mx-auto mt-6 w-full dark:prose-invert prose-p:text-pretty prose-pre:w-full prose-img:rounded-xl'
+  >
+    <Content />
+  </section>
 </BlogLayout>

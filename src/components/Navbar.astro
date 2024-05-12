@@ -3,9 +3,8 @@ import Home from '@/icons/Home.astro'
 import Blog from '@/icons/Blog.astro'
 import Stack from '@/icons/Stack.astro'
 import Contact from '@/icons/Contact.astro'
-import Cmd from '@/icons/Cmd.astro'
 import NavLink from '@/components/navbar/NavLink.astro'
-import CmdK from './navbar/CmdK.astro'
+import CmdK from '@/components/navbar/CmdK.astro'
 ---
 
 <nav
@@ -34,7 +33,6 @@ import CmdK from './navbar/CmdK.astro'
       <NavLink
         href='/stack'
         tooltip='Stack'
-        disabled
         ><Stack /></NavLink
       >
     </li>
@@ -44,9 +42,8 @@ import CmdK from './navbar/CmdK.astro'
         </li>-->
     <li>
       <NavLink
-        href='/contacto'
+        href='mailto:aaronperezaguilera@gmail.com'
         tooltip='Contacto'
-        disabled
         ><Contact /></NavLink
       >
     </li>
