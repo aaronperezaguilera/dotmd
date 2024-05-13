@@ -23,7 +23,7 @@ export const Views = ({ slug, increment }: { slug: string; increment?: boolean }
 
   return (
     <div className='flex items-center'>
-      <span>{views}</span>
+      <span className=' text-sm'>{views}</span>
       <svg
         width='16'
         height='16'

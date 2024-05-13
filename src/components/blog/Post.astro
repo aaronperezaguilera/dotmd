@@ -1,8 +1,10 @@
 ---
 import Fixed from '@/icons/Fixed.astro'
 import Views from './Views.tsx'
+import Clock from '@/icons/Clock.astro'
 
 const { post } = Astro.props
+const { remarkPluginFrontmatter } = await post.render()
 ---
 
 <article class='relative rounded-lg bg-[#f8f8f8] transition dark:bg-secondary dark:hover:bg-hover'>
@@ -18,7 +20,7 @@ const { post } = Astro.props
       {post.data.fixed && <Fixed />}
     </header>
     <p class='line-clamp-2 text-sm text-neutral-400'>{post.data.description}</p>
-    <footer class='flex justify-between text-sm text-neutral-300'>
+    <footer class='flex items-center justify-between text-sm text-neutral-300'>
       {
         post.data.pubDate.toLocaleDateString('es-ES', {
           day: 'numeric',
@@ -26,11 +28,9 @@ const { post } = Astro.props
           year: 'numeric'
         })
       }
-      <div class='flex items-center'>
-        <Views
-          slug={post.slug}
-          client:load
-        />
+      <div class='flex items-center gap-1 text-sm'>
+        {remarkPluginFrontmatter.minutesRead} min
+        <Clock />
       </div>
     </footer>
   </div>

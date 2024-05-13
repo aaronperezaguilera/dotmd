@@ -1,5 +1,4 @@
 ---
-import Views from '@/components/blog/Views'
 import BlogLayout from '@/layouts/BlogLayout.astro'
 
 import { getCollection } from 'astro:content'
@@ -13,19 +12,12 @@ export async function getStaticPaths() {
 }
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props
-const { Content } = await entry.render()
+const { Content, remarkPluginFrontmatter } = await entry.render()
 ---
 
 <BlogLayout frontmatter={entry.data}>
   <header class='mx-auto max-w-[65ch]'>
-    <div class='flex w-full justify-between'>
-      <h1 class='text-pretty text-2xl'>{entry.data.title}</h1>
-      <Views
-        slug={entry.slug}
-        increment
-        client:load
-      />
-    </div>
+    <h1 class='text-pretty text-2xl'>{entry.data.title}</h1>
     <date class='text-sm text-secondary'
       >{
         entry.data.pubDate.toLocaleDateString('es-ES', {
@@ -35,7 +27,6 @@ const { Content } = await entry.render()
         })
       }</date
     >
-
     <img
       src={entry.data.image.url}
       alt={entry.data.title}
