@@ -1,15 +1,37 @@
 ---
 import Filter from '@/icons/Filter.astro'
 import Rss from '@/icons/Rss.astro'
+const isCurrentPage = Astro.url.pathname.split('/')[2]
 ---
 
 <header class='flex items-center justify-between pt-6 md:pt-[65px]'>
   <h1 class='text-xl'>Blog</h1>
   <nav>
     <ul class='flex gap-4 text-sm sm:gap-6'>
-      <li><a href='/blog'> Todo </a></li>
-      <li><a href='/blog/guias'> Guías </a></li>
-      <li><a href='/blog/opiniones'> Opiniones </a></li>
+      <li>
+        <a
+          href='/blog'
+          class={`${!isCurrentPage && 'font-semibold'}`}
+        >
+          Todo
+        </a>
+      </li>
+      <li>
+        <a
+          href='/blog/guias'
+          class={`${isCurrentPage === 'guias' && 'font-semibold'}`}
+        >
+          Guías
+        </a>
+      </li>
+      <li>
+        <a
+          href='/blog/opiniones'
+          class={`${isCurrentPage === 'opiniones' && 'font-semibold'}`}
+        >
+          Opiniones
+        </a>
+      </li>
     </ul>
   </nav>
   <div class='flex items-center gap-2'>
@@ -20,6 +42,6 @@ import Rss from '@/icons/Rss.astro'
     >
       <Rss />
     </a>
-    <Filter />
+    <!-- <Filter /> -->
   </div>
 </header>
