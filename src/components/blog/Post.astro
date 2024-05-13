@@ -26,12 +26,12 @@ const { post } = Astro.props
           year: 'numeric'
         })
       }
-      <span
-        ><Views
+      <div class='flex items-center'>
+        <Views
           slug={post.slug}
           client:load
-        /></span
-      >
+        />
+      </div>
     </footer>
   </div>
 </article>
