@@ -14,8 +14,9 @@ import mdx from '@astrojs/mdx'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), sitemap(), mdx()],
+  integrations: [tailwind(), react(), sitemap(), mdx(), db()],
   site: 'https://dotmd.io',
+  output: 'hybrid',
   markdown: {
     smartypants: false,
     // Applied to .md and .mdx files

@@ -1,5 +1,6 @@
 ---
 import Fixed from '@/icons/Fixed.astro'
+import Views from './Views.tsx'
 
 const { post } = Astro.props
 ---
@@ -25,7 +26,12 @@ const { post } = Astro.props
           year: 'numeric'
         })
       }
-      <span>90 Views</span>
+      <span
+        ><Views
+          slug={post.slug}
+          client:load
+        /></span
+      >
     </footer>
   </div>
 </article>
