@@ -1,5 +1,5 @@
 ---
-const { frontmatter } = Astro.props
+const { frontmatter, slug } = Astro.props
 
 import Layout from '@/layouts/Layout.astro'
 import Back from '@/icons/Back.astro'
@@ -21,7 +21,7 @@ import Views from '@/components/blog/Views'
         <Back />Volver al blog
       </a>
       <Views
-        slug={frontmatter.slug}
+        slug={slug}
         increment
         client:load
       />
