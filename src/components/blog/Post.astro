@@ -4,6 +4,12 @@ import Clock from '@/icons/Clock.astro'
 
 const { post } = Astro.props
 const { remarkPluginFrontmatter } = await post.render()
+
+const date = post.data.pubDate.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+})
 ---
 
 <article class='relative rounded-lg bg-[#f8f8f8] transition dark:bg-secondary dark:hover:bg-hover'>
@@ -20,13 +26,12 @@ const { remarkPluginFrontmatter } = await post.render()
     </header>
     <p class='line-clamp-2 text-sm text-neutral-400'>{post.data.description}</p>
     <footer class='flex items-center justify-between text-sm text-neutral-300'>
-      {
-        post.data.pubDate.toLocaleDateString('es-ES', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        })
-      }
+      <time
+        datetime={date}
+        data-title={date}
+      >
+        {date}
+      </time>
       <div class='flex items-center gap-1 text-sm'>
         {remarkPluginFrontmatter.minutesRead} min
         <Clock />

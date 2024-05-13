@@ -13,6 +13,12 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { entry } = Astro.props
 const { Content, remarkPluginFrontmatter } = await entry.render()
+
+const date = entry.data.pubDate.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+})
 ---
 
 <BlogLayout
@@ -21,14 +27,11 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 >
   <header class='mx-auto max-w-[65ch]'>
     <h1 class='text-pretty text-2xl'>{entry.data.title}</h1>
-    <date class='text-sm text-secondary'
-      >{
-        entry.data.pubDate.toLocaleDateString('es-ES', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        })
-      }</date
+    <time
+      datetime={date}
+      data-title={date}
+      class='text-sm text-secondary'
+      >{date}</time
     >
     <img
       src={entry.data.image.url}
