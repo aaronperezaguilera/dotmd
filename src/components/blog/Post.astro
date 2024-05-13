@@ -32,8 +32,8 @@ const date = post.data.pubDate.toLocaleDateString('es-ES', {
       >
         {date}
       </time>
-      <div class='flex items-center gap-1 text-sm'>
-        {remarkPluginFrontmatter.minutesRead} min
+      <div class='flex items-center gap-2 text-sm'>
+        <span>{remarkPluginFrontmatter.minutesRead} min</span>
         <Clock />
       </div>
     </footer>
