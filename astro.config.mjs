@@ -8,15 +8,16 @@ import { remarkReadingTime } from './plugins/remark-reading-time.mjs'
 import { rehypeAutolink } from './plugins/rehype-autolink'
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis'
 import rehypeSlug from 'rehype-slug'
-import react from '@astrojs/react'
-
 import mdx from '@astrojs/mdx'
+import react from '@astrojs/react'
+import cloudflare from '@astrojs/cloudflare'
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react(), sitemap(), mdx(), db()],
   site: 'https://dotmd.io',
   output: 'hybrid',
+  adapter: cloudflare(),
   markdown: {
     smartypants: false,
     // Applied to .md and .mdx files
