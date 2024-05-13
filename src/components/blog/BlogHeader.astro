@@ -13,7 +13,13 @@ import Rss from '@/icons/Rss.astro'
     </ul>
   </nav>
   <div class='flex items-center gap-2'>
-    <a href='/rss.xml'> <Rss /> </a>
+    <a
+      href='/rss.xml'
+      rel='noopener noreferrer'
+      target='_blank'
+    >
+      <Rss />
+    </a>
     <Filter />
   </div>
 </header>

@@ -3,6 +3,7 @@ const { frontmatter } = Astro.props
 
 import Layout from '@/layouts/Layout.astro'
 import Back from '@/icons/Back.astro'
+import Share from '@/components/blog/Share.astro'
 ---
 
 <Layout
@@ -20,5 +21,6 @@ import Back from '@/icons/Back.astro'
       </a>
     </header>
     <slot />
+    <Share />
   </main>
 </Layout>
