@@ -24,8 +24,8 @@ const date = post.data.pubDate.toLocaleDateString('es-ES', {
       <h2>{post.data.title}</h2>
       {post.data.fixed && <Fixed />}
     </header>
-    <p class='line-clamp-2 text-sm text-neutral-400'>{post.data.description}</p>
-    <footer class='flex items-center justify-between text-sm text-neutral-300'>
+    <p class='line-clamp-2 text-sm text-prose'>{post.data.description}</p>
+    <footer class='flex items-center justify-between text-sm text-secondary'>
       <time
         datetime={date}
         data-title={date}

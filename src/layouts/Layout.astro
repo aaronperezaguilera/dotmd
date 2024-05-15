@@ -47,5 +47,15 @@ const { title, description, img } = Astro.props
         })
       })
     </script>
+    <style is:global>
+      @media (prefers-color-scheme: light) {
+        .text-prose {
+          color: #555;
+        }
+        .text-secondary {
+          color: #232323;
+        }
+      }
+    </style>
   </body>
 </html>
