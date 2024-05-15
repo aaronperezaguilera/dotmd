@@ -28,50 +28,22 @@ const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
 ---
 
 <Section>
-  <div class='flex flex-col-reverse items-center justify-center gap-4 text-center sm:flex-col'>
+  <div class='flex flex-col items-center justify-center gap-4 text-center sm:flex-col'>
     <figure>
       <img
         src={image}
         alt={name}
+        class='aspect-square w-28 rounded-full object-cover'
       />
     </figure>
     <div class='flex flex-col items-center justify-center gap-4'>
-      <h1>{name}</h1>
-      <h2 class='text-balance text-secondary sm:text-pretty'>{label}</h2>
-      <span class='text-secondary'>
-        <WorldMap />
-        {city}, {region}
-      </span>
+      <h1 class='w-fit text-2xl'>{name}</h1>
+      <h2 class='text-balance text-secondary'>{label}</h2>
+
       <footer class='hidden text-sm text-secondary print:flex'>
         {printInfo}
       </footer>
       <footer class='mt-2 flex gap-6 text-sm text-secondary print:hidden'>
-        {
-          email && (
-            <a
-              href={`mailto:${email}`}
-              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
-              target='_blank'
-              rel='noopener noreferrer'
-              data-tippy-content='Contacto'
-              data-tippy-placement='bottom'
-            >
-              <Contact />
-            </a>
-          )
-        }
-        {
-          phone && (
-            <a
-              href={`tel:${phone}`}
-              title={`Llamar por teléfono a ${name} al número ${phone}`}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <Phone />
-            </a>
-          )
-        }
         {
           profiles.map(({ network, url, username }) => {
             const Icon = SOCIAL_ICONS[network]
@@ -93,61 +65,48 @@ const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
       </footer>
     </div>
   </div>
-  <div class='mt-6 flex items-center justify-center gap-4 print:hidden'>
-    <span class='relative flex h-4 w-4 items-center justify-center'>
-      <span
-        class='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75'
-      ></span>
+  <div class='mt-8 flex flex-col items-center justify-center gap-4'>
+    <div class='mt-0 flex items-center justify-center gap-4 print:hidden'>
+      <span class='relative flex h-4 w-4 items-center justify-center'>
+        <span
+          class='absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75'
+        ></span>
 
-      <span class='relative inline-flex h-2 w-2 rounded-full bg-green-500'></span>
+        <span class='relative inline-flex h-2 w-2 rounded-full bg-emerald-500'></span>
+      </span>
+      <p class='text-sm text-secondary sm:text-base dark:text-prose'>
+        Disponible para nuevos proyectos.
+      </p>
+    </div>
+    <div
+      class='mx-auto flex w-full flex-col items-center justify-center gap-1 text-sm sm:max-w-[80%] sm:flex-row sm:gap-4'
+    >
+      <a
+        class='flex w-full grow items-center justify-center gap-2 rounded-lg border bg-[#f8f8f8] py-2 text-black transition dark:border-primary dark:bg-white dark:hover:bg-[#f8f8f8]'
+        href={`mailto:${email}`}
+        download
+        >Contacta conmigo <Contact class='w-4 text-[#707070]' /></a
+      >
+      <span class='text-secondary'>o</span>
+      <a
+        href='/Portafolio Aaron.pdf'
+        class='flex w-full grow items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+        target='_blank'
+        rel='noopener noreferrer'
+        >Descarga mi currículum</a
+      >
+    </div>
+    <span class='flex items-center gap-1 text-sm text-secondary'>
+      <WorldMap />
+      {city}, {region}
     </span>
-    <p class='text-sm text-secondary sm:text-base dark:text-prose'>
-      Disponible para nuevos proyectos.
-    </p>
   </div>
-  <!--
-  <div class='mt-6 flex flex-col items-center justify-center gap-1 sm:flex-row sm:gap-4'>
-    <a
-      href='/Portafolio Aaron.pdf'
-      class='inline-flex w-64 grow items-center justify-center rounded-lg border bg-secondary py-2 text-white transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
-      target='_blank'
-      rel='noopener noreferrer'
-      >Descarga mi currículum</a
-    >
-    o
-
-    <a
-      class='inline-flex w-64 grow items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 text-black transition dark:border-primary dark:bg-white dark:hover:bg-[#f8f8f8]'
-      href={`mailto:${email}`}
-      download
-      >Contacta conmigo</a
-    >
-  </div> -->
 </Section>
 
 <style>
-  h1 {
-    font-size: 2rem;
-    width: fit-content;
-  }
-  img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    width: 128px;
-    border-radius: 100%;
-  }
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.85rem;
-    letter-spacing: -0.05rem;
-  }
-
   footer {
     gap: 24px;
-    margin-top: 8px;
+    margin-top: 0px;
   }
 
   footer a {
