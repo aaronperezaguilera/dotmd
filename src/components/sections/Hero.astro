@@ -19,24 +19,33 @@ const SOCIAL_ICONS: SocialIcon = {
   X,
   Twitch
 }
+
+const linkedInfo = profiles.find(({ network }) => network === 'LinkedIn')
+const linkedUrl = linkedInfo?.url
+const siteUrl = Astro.site
+
+const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
 ---
 
 <Section>
-  <div class='container'>
+  <div class='flex flex-col-reverse items-center justify-center gap-4 text-center sm:flex-col'>
     <figure>
       <img
         src={image}
         alt={name}
       />
     </figure>
-    <div class='info'>
+    <div class='flex flex-col items-center justify-center gap-4'>
       <h1>{name}</h1>
-      <h2 class='text-pretty text-secondary'>{label}</h2>
+      <h2 class='text-balance text-secondary sm:text-pretty'>{label}</h2>
       <span class='text-secondary'>
         <WorldMap />
         {city}, {region}
       </span>
-      <footer class='no-print'>
+      <footer class='hidden text-sm text-secondary print:flex'>
+        {printInfo}
+      </footer>
+      <footer class='mt-2 flex gap-6 text-sm text-secondary print:hidden'>
         {
           email && (
             <a
@@ -84,7 +93,7 @@ const SOCIAL_ICONS: SocialIcon = {
       </footer>
     </div>
   </div>
-  <div class='mt-6 flex items-center justify-center gap-4'>
+  <div class='mt-6 flex items-center justify-center gap-4 print:hidden'>
     <span class='relative flex h-4 w-4 items-center justify-center'>
       <span
         class='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75'
@@ -92,27 +101,31 @@ const SOCIAL_ICONS: SocialIcon = {
 
       <span class='relative inline-flex h-2 w-2 rounded-full bg-green-500'></span>
     </span>
-    <p class='text-sm text-prose sm:text-base'>Disponible para nuevos proyectos.</p>
+    <p class='text-sm text-secondary sm:text-base dark:text-prose'>
+      Disponible para nuevos proyectos.
+    </p>
   </div>
+  <!--
+  <div class='mt-6 flex flex-col items-center justify-center gap-1 sm:flex-row sm:gap-4'>
+    <a
+      href='/Portafolio Aaron.pdf'
+      class='inline-flex w-64 grow items-center justify-center rounded-lg border bg-secondary py-2 text-white transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+      target='_blank'
+      rel='noopener noreferrer'
+      >Descarga mi currículum</a
+    >
+    o
+
+    <a
+      class='inline-flex w-64 grow items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 text-black transition dark:border-primary dark:bg-white dark:hover:bg-[#f8f8f8]'
+      href={`mailto:${email}`}
+      download
+      >Contacta conmigo</a
+    >
+  </div> -->
 </Section>
 
 <style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
   h1 {
     font-size: 2rem;
     width: fit-content;
@@ -133,9 +146,6 @@ const SOCIAL_ICONS: SocialIcon = {
   }
 
   footer {
-    color: #555;
-    font-size: 0.65rem;
-    display: flex;
     gap: 24px;
     margin-top: 8px;
   }
@@ -153,34 +163,5 @@ const SOCIAL_ICONS: SocialIcon = {
 
   footer a:hover {
     color: #eee;
-  }
-
-  @media (width <= 700px) {
-    .container {
-      flex-direction: column-reverse;
-    }
-    img {
-      width: 128px;
-    }
-    .info {
-      justify-content: center;
-      align-items: center;
-      padding-right: 0;
-      text-align: center;
-    }
-
-    figure {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    h2 {
-      text-wrap: balance;
-    }
-
-    figure {
-      margin: 0 auto;
-    }
   }
 </style>

@@ -1,9 +1,9 @@
 ---
 // se ejecuta en el servidor o en build time <----
-const { title } = Astro.props
+const { title, className } = Astro.props
 ---
 
-<section class='relative mx-auto mb-9 max-w-[65ch] md:mb-12'>
+<section class={`relative mx-auto mb-9 max-w-[65ch] md:mb-12 ${className}`}>
   {title && <h2 class='mb-6 text-secondary lg:absolute lg:-left-36 lg:mb-0 lg:flex'>{title}</h2>}
   <slot />
 </section>
