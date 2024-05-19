@@ -40,10 +40,17 @@ const { title, description, img } = Astro.props
       import 'tippy.js/animations/shift-away.css'
 
       document.addEventListener('astro:page-load', () => {
-        tippy('[data-tippy-content]', {
-          animation: 'shift-away',
-          placement: 'right',
-          touch: false
+        const links = document.querySelectorAll('[data-tippy-content]')
+
+        links.forEach((link) => {
+          const delay = link.getAttribute('href') === window.location.pathname ? 500 : 0
+
+          tippy(link, {
+            animation: 'shift-away',
+            placement: 'right',
+            touch: false,
+            delay: [delay, 0]
+          })
         })
       })
     </script>
