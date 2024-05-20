@@ -12,7 +12,10 @@ import ContactForm from '@/components/ContactForm.tsx'
   description='Contacto'
   img='/me.webp'
 >
-  <main>
+  <main class='w-full px-6 pb-20 pt-6 md:pt-16'>
+    <header class='max-w-[65ch] mx-auto pb-8'>
+      <h1 class='text-xl'>Contacta conmigo a través del formulario:</h1>
+    </header>
     <ContactForm client:load />
   </main>
 </Layout>

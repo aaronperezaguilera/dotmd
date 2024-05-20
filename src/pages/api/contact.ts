@@ -1,3 +1,5 @@
+export const prerender = false
+
 import { Resend } from 'resend'
 
 import type { APIRoute } from 'astro'
