@@ -1,14 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-
-import { basics } from '@cv'
-const { name, label } = basics
+import ContacForm from '@/components/ContactForm.tsx'
 ---
 
 <Layout
-  title={`Portafolio de ${name} - ${label}`}
+  title={`Contacto`}
   description='Contacto'
   img='/me.webp'
 >
-  <main>Contacto</main>
+  <main class='w-full px-6 pb-[65px] pt-6 md:pt-[65px]'>
+    <header class='mx-auto max-w-[65ch] pb-8'>
+      <h1 class='text-xl'>Contacta conmigo a través del formulario:</h1>
+    </header>
+    <ContacForm client:load />
+  </main>
 </Layout>
