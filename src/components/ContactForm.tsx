@@ -3,6 +3,7 @@ import { Toaster, toast } from 'sonner'
 
 export default function Form() {
   const [responseMessage, setResponseMessage] = useState('')
+  const [responseStatus, setResponseStatus] = useState(400)
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -15,6 +16,7 @@ export default function Form() {
     const data = await response.json()
     if (data.message) {
       setResponseMessage(data.message)
+      setResponseStatus(response.status)
     }
     form.reset()
   }
@@ -61,7 +63,9 @@ export default function Form() {
       </button>
       <Toaster />
       <div className='hidden'>
-        {responseMessage && toast.success(responseMessage)}
+        {responseStatus === 200
+          ? toast.success(responseMessage)
+          : toast.error(responseMessage)}
       </div>
     </form>
   )
