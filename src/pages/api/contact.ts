@@ -1,3 +1,5 @@
+export const prerender = false
+
 import type { APIRoute } from 'astro'
 import sendGrid from '@sendgrid/mail'
 sendGrid.setApiKey(import.meta.env.SENDGRID_API_KEY)
