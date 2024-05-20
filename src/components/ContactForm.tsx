@@ -1,4 +1,5 @@
 import { type FormEvent, useState } from 'react'
+import { Toaster, toast } from 'sonner'
 
 export default function Form() {
   const [responseMessage, setResponseMessage] = useState('')
@@ -58,7 +59,10 @@ export default function Form() {
       <button className='flex w-full grow items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'>
         Send
       </button>
-      {responseMessage && <p>{responseMessage}</p>}
+      <Toaster />
+      <div className='hidden'>
+        {responseMessage && toast.success(responseMessage)}
+      </div>
     </form>
   )
 }

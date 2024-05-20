@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
     from: 'aaron@dotmd.io',
     to: 'aaron@dotmd.io',
     subject: `New message from ${name}`,
-    html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+    html: `<h1>New message from ${name}</h1><p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`
   })
   // Do something with the data, then return a success response
   return new Response(
