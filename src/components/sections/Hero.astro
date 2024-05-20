@@ -83,7 +83,8 @@ const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
     >
       <a
         class='flex w-full grow items-center justify-center gap-2 rounded-lg border bg-[#f8f8f8] py-2 text-black transition dark:border-primary dark:bg-white dark:hover:bg-[#f8f8f8]'
-        href='/contacto'
+        href={`mailto:${email}`}
+        download
         >Contacta conmigo <Contact class='w-4 text-[#707070]' /></a
       >
       <span class='text-secondary'>o</span>
