@@ -21,7 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
     )
   }
 
-  const rem = resend.emails.send({
+  await resend.emails.send({
     from: 'aaron@dotmd.io',
     to: 'aaron@dotmd.io',
     subject: `New message from ${name}`,
@@ -30,9 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
   // Do something with the data, then return a success response
   return new Response(
     JSON.stringify({
-      message: (await rem).error
-        ? 'Error sending message'
-        : 'Mensaje enviado con éxito'
+      message: 'Mensaje enviado con éxito'
     }),
     { status: 200 }
   )
