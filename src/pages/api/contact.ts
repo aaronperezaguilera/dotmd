@@ -4,7 +4,8 @@ import { Resend } from 'resend'
 
 import type { APIRoute } from 'astro'
 
-const RESEND_API_KEY = import.meta.env.RESEND_API_KEY
+const RESEND_API_KEY =
+  import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY
 
 export const POST: APIRoute = async ({ request }) => {
   const resend = new Resend(RESEND_API_KEY)
