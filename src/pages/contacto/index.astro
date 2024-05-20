@@ -3,6 +3,8 @@ import Layout from '@/layouts/Layout.astro'
 
 import { basics } from '@cv'
 const { name, label } = basics
+
+import ContactForm from '@/components/ContactForm.tsx'
 ---
 
 <Layout
@@ -10,5 +12,7 @@ const { name, label } = basics
   description='Contacto'
   img='/me.webp'
 >
-  <main>Contacto</main>
+  <main>
+    <ContactForm client:load />
+  </main>
 </Layout>
