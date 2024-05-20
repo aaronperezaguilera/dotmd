@@ -138,6 +138,9 @@ importers:
       tailwindcss-animated:
         specifier: ^1.0.1
         version: 1.0.1(tailwindcss@3.4.3)
+      vite:
+        specifier: ^5.2.11
+        version: 5.2.11(@types/node@20.12.11)
 
 packages:
 
