@@ -3,16 +3,9 @@ export const prerender = false
 import { Resend } from 'resend'
 
 import type { APIRoute } from 'astro'
-import { loadEnv } from 'vite'
-
-const { RESEND_API_KEY } = loadEnv(
-  process.env.RESEND_API_KEY || import.meta.env.RESEND_API_KEY,
-  process.cwd(),
-  ''
-)
 
 export const POST: APIRoute = async ({ request }) => {
-  const resend = new Resend(RESEND_API_KEY)
+  const resend = new Resend('re_E4XhCbzr_PaHCXvhqMXBFbCBsHurRydaJ')
 
   const data = await request.formData()
   const name = data.get('name')
