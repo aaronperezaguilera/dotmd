@@ -5,7 +5,7 @@ import { Resend } from 'resend'
 import type { APIRoute } from 'astro'
 
 export const POST: APIRoute = async ({ request }) => {
-  const resend = new Resend('re_E4XhCbzr_PaHCXvhqMXBFbCBsHurRydaJ')
+  const resend = new Resend((await import.meta.env.RESEND_API_KEY) as string)
 
   const data = await request.formData()
   const name = data.get('name')
@@ -22,8 +22,8 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   await resend.emails.send({
-    from: 'aaron@dotmd.io',
-    to: 'aaron@dotmd.io',
+    from: 'aaron@dotmdx.com',
+    to: 'aaronperezaguilera@gmail.com',
     subject: `New message from ${name}`,
     html: `<h1>New message from ${name}</h1><p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`
   })
