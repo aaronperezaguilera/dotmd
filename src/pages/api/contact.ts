@@ -5,7 +5,8 @@ import { Resend } from 'resend'
 import type { APIRoute } from 'astro'
 
 export const POST: APIRoute = async ({ request }) => {
-  const resend = new Resend((await import.meta.env.RESEND_API_KEY) as string)
+  const RESEND_API_KEY = await import.meta.env.RESEND_API_KEY
+  const resend = new Resend(RESEND_API_KEY)
 
   const data = await request.formData()
   const name = data.get('name')
