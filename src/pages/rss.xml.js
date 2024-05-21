@@ -26,7 +26,7 @@ export async function GET(context) {
           width="1920"
           height="1080"
           medium="image"
-          url="https://dotmd.io${post.data.image.url}" />
+          url="https://dotmdx.com${post.data.image.url}" />
       `
     })),
     customData:

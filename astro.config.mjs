@@ -15,7 +15,7 @@ import cloudflare from '@astrojs/cloudflare'
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react(), sitemap(), mdx(), db()],
-  site: 'https://dotmd.io',
+  site: 'https://dotmdx.com',
   output: 'hybrid',
   adapter: cloudflare(),
   vite: {

@@ -28,7 +28,9 @@ const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
 ---
 
 <Section>
-  <div class='flex flex-col items-center justify-center gap-4 text-center sm:flex-col'>
+  <div
+    class='flex flex-col items-center justify-center gap-4 text-center sm:flex-col'
+  >
     <figure>
       <img
         src={image}
@@ -72,7 +74,8 @@ const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
           class='absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75'
         ></span>
 
-        <span class='relative inline-flex h-2 w-2 rounded-full bg-emerald-500'></span>
+        <span class='relative inline-flex h-2 w-2 rounded-full bg-emerald-500'
+        ></span>
       </span>
       <p class='text-sm text-secondary sm:text-base dark:text-prose'>
         Disponible para nuevos proyectos.
@@ -83,8 +86,7 @@ const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
     >
       <a
         class='flex w-full grow items-center justify-center gap-2 rounded-lg border bg-[#f8f8f8] py-2 text-black transition dark:border-primary dark:bg-white dark:hover:bg-[#f8f8f8]'
-        href={`mailto:${email}`}
-        download
+        href='/contacto'
         >Contacta conmigo <Contact class='w-4 text-[#707070]' /></a
       >
       <span class='text-secondary'>o</span>
@@ -92,8 +94,7 @@ const printInfo = [email, siteUrl, linkedUrl].filter(Boolean).join(' • ')
         href='/Portafolio Aaron.pdf'
         class='flex w-full grow items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
         target='_blank'
-        rel='noopener noreferrer'
-        >Descarga mi currículum</a
+        rel='noopener noreferrer'>Descarga mi currículum</a
       >
     </div>
     <span class='flex items-center gap-1 text-sm text-secondary'>

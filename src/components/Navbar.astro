@@ -10,40 +10,28 @@ import CmdK from '@/components/CmdK.astro'
 <nav
   class='fixed bottom-0 z-50 flex h-[65px] w-screen shrink-0 items-center justify-center border-t bg-white md:sticky md:top-0 md:h-screen md:w-[65px] md:flex-col md:border-r dark:border-t-primary dark:bg-primary dark:md:border-r-primary print:hidden'
 >
-  <ul class='flex w-full items-center justify-between gap-6 px-6 md:flex-col md:justify-center'>
+  <ul
+    class='flex w-full items-center justify-between gap-6 px-6 md:flex-col md:justify-center'
+  >
     <li>
-      <NavLink
-        href='/'
-        tooltip='Inicio'
-        ><Home /></NavLink
-      >
+      <NavLink href='/' tooltip='Inicio'><Home /></NavLink>
     </li>
     <li>
-      <NavLink
-        href='/blog'
-        tooltip='Blog'
-        ><Blog /></NavLink
-      >
+      <NavLink href='/blog' tooltip='Blog'><Blog /></NavLink>
     </li>
     <!--
         <li>
             <a href="/">Proyectos</a>
         </li> -->
     <li>
-      <NavLink
-        href='/stack'
-        tooltip='Stack'
-        ><Stack /></NavLink
-      >
+      <NavLink href='/stack' tooltip='Stack'><Stack /></NavLink>
     </li>
     <!--
         <li>
             <a href="/">Sobre mi</a>
         </li>-->
     <li>
-      <NavLink
-        href='mailto:aaron@dotmd.io'
-        tooltip='Contacto'
+      <NavLink href='/contacto' tooltip='Contacto'
         ><Contact class='w-6' /></NavLink
       >
     </li>
