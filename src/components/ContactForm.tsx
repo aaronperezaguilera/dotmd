@@ -32,7 +32,7 @@ export default function Form() {
           name='name'
           placeholder='Nombre'
           autoComplete='name'
-          className='bg-primary border border-primary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
+          className='dark:bg-primary border dark:border-primary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
           required
         />
       </label>
@@ -43,7 +43,7 @@ export default function Form() {
           name='email'
           placeholder='Email'
           autoComplete='email'
-          className='bg-primary border border-primary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
+          className='dark:bg-primary border dark:border-primary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
           required
         />
       </label>
@@ -53,7 +53,7 @@ export default function Form() {
           name='message'
           placeholder='Mensaje'
           autoComplete='off'
-          className='bg-primary border border-primary h-48 resize-none rounded-lg p-2 dark:hover:bg-secondary transition'
+          className='dark:bg-primary border dark:border-primary h-48 resize-none rounded-lg p-2 dark:hover:bg-secondary transition'
           required
         />
       </label>
