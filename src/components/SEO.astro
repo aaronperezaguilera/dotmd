@@ -16,21 +16,11 @@ const canonicalURL = canonical
 <title>{title}</title>
 
 <meta charset='UTF-8' />
-<meta
-  name='description'
-  content={description}
-/>
+<meta name='description' content={description} />
 
-<link
-  rel='icon'
-  href='/favicon.svg'
-  type='image/svg+xml'
-/>
+<link rel='icon' href='/favicon.svg' type='image/svg+xml' />
 
-<link
-  rel='sitemap'
-  href={`${Astro.site}sitemap-index.xml`}
-/>
+<link rel='sitemap' href={`${Astro.site}sitemap-index.xml`} />
 <link
   rel='alternate'
   type='application/rss+xml'
@@ -38,99 +28,36 @@ const canonicalURL = canonical
   href={`${Astro.site}rss.xml`}
 />
 
-<link
-  rel='canonical'
-  href={canonicalURL}
-/>
-<meta
-  name='viewport'
-  content='width=device-width'
-/>
-<meta
-  name='theme-color'
-  content='#232323'
-/>
+<link rel='canonical' href={canonicalURL} />
+<meta name='viewport' content='width=device-width' />
+<meta name='theme-color' content='#232323' />
 
 <meta
   name='keywords'
   content='Aaron, blog, frontend, astro, programación, desarrollo'
 />
 
-<meta
-  name='author'
-  content='Aaron Pérez Aguilera'
-/>
+<meta name='author' content='Aaron Pérez Aguilera' />
 
-<meta
-  name='twitter:card'
-  content='summary_large_image'
-/>
-<meta
-  name='twitter:site'
-  content='@dotmdx'
-/>
-<meta
-  name='twitter:creator'
-  content='@dotmdx'
-/>
-<meta
-  name='twitter:title'
-  content={title}
-/>
-<meta
-  name='twitter:description'
-  content={description}
-/>
-<meta
-  name='twitter:image'
-  content={`https://dotmd.io${img}`}
-/>
+<meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:site' content='@dotmdx' />
+<meta name='twitter:creator' content='@dotmdx' />
+<meta name='twitter:title' content={title} />
+<meta name='twitter:description' content={description} />
+<meta name='twitter:image' content={`https://dotmdx.com${img}`} />
 
-<meta
-  name='og:image'
-  content={`https://dotmd.io${img}`}
-/>
-<meta
-  property='og:image'
-  content={`https://dotmd.io${img}`}
-/>
-<meta
-  property='og:image:type'
-  content='image/webp'
-/>
-<meta
-  name='og:title'
-  content={title}
-/>
-<meta
-  name='og:description'
-  content={description}
-/>
-<meta
-  name='og:url'
-  content={canonicalURL}
-/>
-<meta
-  name='og:site_name'
-  content='Aaron'
-/>
-<meta
-  name='og:type'
-  content='website'
-/>
-<meta
-  name='og:locale'
-  content='es_ES'
-/>
+<meta name='og:image' content={`https://dotmdx.com${img}`} />
+<meta property='og:image' content={`https://dotmdx.com${img}`} />
+<meta property='og:image:type' content='image/webp' />
+<meta name='og:title' content={title} />
+<meta name='og:description' content={description} />
+<meta name='og:url' content={canonicalURL} />
+<meta name='og:site_name' content='Aaron' />
+<meta name='og:type' content='website' />
+<meta name='og:locale' content='es_ES' />
 
-<meta
-  name='robots'
-  content='index, follow'
-/>
-<meta
-  name='googlebot'
-  content='index, follow'
-/>
+<meta name='robots' content='index, follow' />
+<meta name='googlebot' content='index, follow' />
 
 <!-- Sitemap 
 <meta name="msapplication-config" content="/browserconfig.xml" />-->

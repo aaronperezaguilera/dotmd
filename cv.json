@@ -3,9 +3,9 @@
     "name": "Aaron Pérez Aguilera",
     "label": "Full Stack Developer, IT & eCommerce Manager con más de 5 años de experiencia.",
     "image": "/me.avif",
-    "email": "aaron@dotmd.io",
+    "email": "aaron@dotmdx.com",
     "phone": null,
-    "url": "https://dotmd.dev",
+    "url": "https://dotmdx.com",
     "summary": "Actualmente, ejerzo como IT & eCommerce Manager en Escorpion, donde canalizo mi pasión por la tecnología y el eCommerce en la mejora continua de su plataforma de venta online. Mi enfoque abarca desde el desarrollo frontend hasta la promoción estratégica, siempre con el objetivo de brindar una experiencia excepcional al usuario.",
     "location": {
       "address": "",
@@ -124,12 +124,22 @@
     {
       "name": "Tailwind",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Frontend", "CSS Framework", "Diseño Responsive"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "CSS Framework",
+        "Diseño Responsive"
+      ]
     },
     {
       "name": "TypeScript",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Frontend", "Backend", "JavaScript Superset"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "JavaScript Superset"
+      ]
     },
     {
       "name": "Node",
@@ -139,7 +149,12 @@
     {
       "name": "MySQL",
       "level": "Avanzado",
-      "keywords": ["Bases de Datos", "SQL", "Almacenamiento de Datos", "Backend"]
+      "keywords": [
+        "Bases de Datos",
+        "SQL",
+        "Almacenamiento de Datos",
+        "Backend"
+      ]
     },
     {
       "name": "Git",
@@ -149,12 +164,23 @@
     {
       "name": "GitHub",
       "level": "Avanzado",
-      "keywords": ["Control de Versiones", "Colaboración", "Código Fuente", "Git"]
+      "keywords": [
+        "Control de Versiones",
+        "Colaboración",
+        "Código Fuente",
+        "Git"
+      ]
     },
     {
       "name": "Next.js",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Frontend", "React Framework", "SSR", "Static Generation"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "React Framework",
+        "SSR",
+        "Static Generation"
+      ]
     },
     {
       "name": "React",
@@ -190,11 +216,11 @@
   ],
   "projects": [
     {
-      "name": "dotmd.io",
+      "name": "dotmdx.com",
       "isActive": true,
       "description": "Blog personal en el que podréis encontrar artículos sobre programación, desarrollo web y tecnología, además de artículos de opinión y reflexión.",
       "highlights": ["Proyecto personal", "En desarrollo"],
-      "url": "https://dotmd.io",
+      "url": "https://dotmdx.com",
       "github": null
     }
   ]
