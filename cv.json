@@ -3,9 +3,9 @@
     "name": "Aaron Pérez Aguilera",
     "label": "Full Stack Developer, IT & eCommerce Manager con más de 5 años de experiencia.",
     "image": "/me.avif",
-    "email": "aaron@dotmdx.com",
+    "email": "aaron@dotmd.io",
     "phone": null,
-    "url": "https://dotmdx.com",
+    "url": "https://dotmd.io",
     "summary": "Actualmente, ejerzo como IT & eCommerce Manager en Escorpion, donde canalizo mi pasión por la tecnología y el eCommerce en la mejora continua de su plataforma de venta online. Mi enfoque abarca desde el desarrollo frontend hasta la promoción estratégica, siempre con el objetivo de brindar una experiencia excepcional al usuario.",
     "location": {
       "address": "",
@@ -216,11 +216,11 @@
   ],
   "projects": [
     {
-      "name": "dotmdx.com",
+      "name": "dotmd.io",
       "isActive": true,
       "description": "Blog personal en el que podréis encontrar artículos sobre programación, desarrollo web y tecnología, además de artículos de opinión y reflexión.",
       "highlights": ["Proyecto personal", "En desarrollo"],
-      "url": "https://dotmdx.com",
+      "url": "https://dotmd.io",
       "github": null
     }
   ]
