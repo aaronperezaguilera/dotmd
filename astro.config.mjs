@@ -18,6 +18,11 @@ export default defineConfig({
   site: 'https://dotmd.io',
   output: 'hybrid',
   adapter: cloudflare(),
+  vite: {
+    define: {
+      'process.env.RESEND_API_KEY': JSON.stringify(process.env.RESEND_API_KEY)
+    }
+  },
   markdown: {
     smartypants: false,
     // Applied to .md and .mdx files
