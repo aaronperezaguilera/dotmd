@@ -63,9 +63,7 @@ export default function Form() {
       </button>
       <Toaster />
       <div className='hidden'>
-        {responseStatus === 200
-          ? toast.success(responseMessage)
-          : toast.error(responseMessage)}
+        {responseStatus === 200 && toast.success(responseMessage)}
       </div>
     </form>
   )
