@@ -24,8 +24,8 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   await resend.emails.send({
-    from: 'aaron@dotmd.io',
-    to: 'aaronperezaguilera@gmail.com',
+    from: 'aaron@dotmdx.com',
+    to: 'aaron@dotmdx.com',
     subject: `New message from ${name}`,
     html: `<h1>New message from ${name}</h1><p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`
   })
