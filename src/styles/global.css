@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+  --color-primary: #232323;
+  --color-secondary: #282828;
+  --color-hover: #2e2e2e;
+  --color-muted: #a0a0a0;
+  --color-prose: #d1d5db;
+  --color-tertiary: #343434;
+}

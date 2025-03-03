@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
 import db from '@astrojs/db'
 import remarkToc from 'remark-toc'
@@ -11,17 +10,19 @@ import rehypeSlug from 'rehype-slug'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import cloudflare from '@astrojs/cloudflare'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), sitemap(), mdx(), db()],
+  integrations: [react(), sitemap(), mdx(), db()],
   site: 'https://dotmd.io',
-  output: 'hybrid',
+  output: 'static',
   adapter: cloudflare(),
   vite: {
     define: {
       'process.env.RESEND_API_KEY': JSON.stringify(process.env.RESEND_API_KEY)
-    }
+    },
+    plugins: [tailwindcss()]
   },
   markdown: {
     smartypants: false,

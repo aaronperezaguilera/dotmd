@@ -32,7 +32,7 @@ export default function Form() {
           name='name'
           placeholder='Nombre'
           autoComplete='name'
-          className='dark:bg-primary border dark:border-primary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
+          className='dark:bg-primary border dark:border-tertiary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
           required
         />
       </label>
@@ -43,7 +43,7 @@ export default function Form() {
           name='email'
           placeholder='Email'
           autoComplete='email'
-          className='dark:bg-primary border dark:border-primary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
+          className='dark:bg-primary border dark:border-tertiary h-12 rounded-lg p-2 dark:hover:bg-secondary transition'
           required
         />
       </label>
@@ -53,11 +53,11 @@ export default function Form() {
           name='message'
           placeholder='Mensaje'
           autoComplete='off'
-          className='dark:bg-primary border dark:border-primary h-48 resize-none rounded-lg p-2 dark:hover:bg-secondary transition'
+          className='dark:bg-primary border dark:border-tertiary h-48 resize-none rounded-lg p-2 dark:hover:bg-secondary transition'
           required
         />
       </label>
-      <button className='flex w-full grow items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'>
+      <button className='flex w-full grow items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 transition dark:border-tertiary dark:bg-secondary dark:hover:bg-hover'>
         Enviar
       </button>
       <Toaster />

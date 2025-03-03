@@ -27,24 +27,21 @@ const Icon = SOFTWARE_ICONS[img]
     href={href}
     class='absolute left-0 top-0 h-full w-full rounded-lg'
     target='_blank'
-    rel='noopener noreferrer'
-  ></a>
-  <div class={`${type === 'software' ? 'h-32' : 'h-full'} flex w-full justify-center pt-6`}>
+    rel='noopener noreferrer'></a>
+  <div
+    class={`${type === 'software' ? 'h-32' : 'h-full'} flex w-full justify-center pt-6`}
+  >
     {
       type === 'software' ? (
         <Icon />
       ) : (
-        <img
-          src={img}
-          alt={title}
-          class='w-56 object-contain'
-        />
+        <img src={img} alt={title} class='w-56 object-contain' />
       )
     }
   </div>
   <div class='flex flex-col gap-2 p-2'>
     <span
-      class='w-fit rounded-lg border border-neutral-300 px-2 py-1 text-xs uppercase tracking-wide text-secondary dark:border-primary'
+      class='w-fit rounded-lg border border-neutral-300 px-2 py-1 text-xs uppercase tracking-wide text-muted dark:border-tertiary'
       >{tag}</span
     >
     <h3 class='text-lg'>{title}</h3>

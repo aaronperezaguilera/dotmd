@@ -7,7 +7,7 @@ import Bmc from '@/icons/Bmc.astro'
   <ul class='flex gap-2'>
     <li>
       <a
-        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-tertiary dark:bg-secondary dark:hover:bg-hover'
         href={`https://twitter.com/intent/tweet?url=${Astro.url}`}
         rel='noopener noreferrer'
         target='_blank'
@@ -29,7 +29,7 @@ import Bmc from '@/icons/Bmc.astro'
 
     <li>
       <a
-        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-tertiary dark:bg-secondary dark:hover:bg-hover'
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${Astro.url}`}
         rel='noopener noreferrer'
         target='_blank'
@@ -43,15 +43,14 @@ import Bmc from '@/icons/Bmc.astro'
           viewBox='0 0 256 256'
           ><path
             d='M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453'
-            fill='currentColor'
-          ></path></svg
+            fill='currentColor'></path></svg
         >
       </a>
     </li>
 
     <li>
       <a
-        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-tertiary dark:bg-secondary dark:hover:bg-hover'
         href={Astro.url}
         data-page-link
       >
@@ -68,15 +67,14 @@ import Bmc from '@/icons/Bmc.astro'
             stroke='#fff'
             stroke-width='2'
             stroke-linecap='round'
-            stroke-linejoin='round'
-          ></path>
+            stroke-linejoin='round'></path>
         </svg>
       </a>
     </li>
 
     <li>
       <a
-        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+        class='flex h-12 w-12 items-center justify-center rounded-lg border bg-[#f8f8f8] transition dark:border-tertiary dark:bg-secondary dark:hover:bg-hover'
         href={`mailto:?body=${Astro.url}`}
         rel='noopener noreferrer'
         target='_blank'
@@ -93,14 +91,13 @@ import Bmc from '@/icons/Bmc.astro'
             fill-rule='evenodd'
             clip-rule='evenodd'
             d='M5.968 4h12.064c.439 0 .817 0 1.13.021.33.023.66.072.986.207a3 3 0 0 1 1.624 1.624c.135.326.184.656.207.986.021.313.021.691.021 1.13v8.064c0 .439 0 .817-.021 1.13-.023.33-.072.66-.207.986a3 3 0 0 1-1.624 1.624 3.073 3.073 0 0 1-.986.207c-.313.021-.691.021-1.13.021H5.968c-.439 0-.817 0-1.13-.021a3.072 3.072 0 0 1-.986-.207 3 3 0 0 1-1.624-1.624 3.07 3.07 0 0 1-.207-.986C2 16.85 2 16.471 2 16.032V7.968c0-.439 0-.817.021-1.13.023-.33.072-.66.207-.986a3 3 0 0 1 1.624-1.624 3.07 3.07 0 0 1 .986-.207C5.15 4 5.529 4 5.968 4Zm-1.65 2.278a1 1 0 0 1 1.41-.094l5.614 4.911a1 1 0 0 0 1.316 0l5.614-4.911a1 1 0 1 1 1.317 1.505L13.976 12.6a3 3 0 0 1-3.952 0L4.412 7.69a1 1 0 0 1-.095-1.411Z'
-            fill='#fff'
-          ></path>
+            fill='#fff'></path>
         </svg>
       </a>
     </li>
   </ul>
   <a
-    class='mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-lg border bg-[#f8f8f8] transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+    class='mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-lg border bg-[#f8f8f8] transition dark:border-tertiary dark:bg-secondary dark:hover:bg-hover'
     tabindex='0'
     role='link'
     href='https://www.buymeacoffee.com/dotmd'
@@ -112,13 +109,15 @@ import Bmc from '@/icons/Bmc.astro'
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    document.querySelector('[data-page-link]')?.addEventListener('click', async (e) => {
-      try {
-        e.preventDefault()
-        await navigator.clipboard.writeText(window.location.href)
-      } catch (e) {
-        console.error('Failed to copy text', e)
-      }
-    })
+    document
+      .querySelector('[data-page-link]')
+      ?.addEventListener('click', async (e) => {
+        try {
+          e.preventDefault()
+          await navigator.clipboard.writeText(window.location.href)
+        } catch (e) {
+          console.error('Failed to copy text', e)
+        }
+      })
   })
 </script>

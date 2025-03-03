@@ -1,5 +1,7 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import '../styles/global.css'
+
+import { ClientRouter, fade, slide } from 'astro:transitions'
 import '@fontsource/poppins'
 
 import Navbar from '@/components/Navbar.astro'
@@ -19,19 +21,12 @@ const { title, description, img } = Astro.props
 ---
 
 <!doctype html>
-<html
-  lang='es'
-  class='relative scroll-p-8 scroll-smooth antialiased dark:bg-primary dark:text-white'
->
+<html lang='es' class='relative scroll-p-8 scroll-smooth antialiased dark'>
   <head>
-    <SEO
-      title={title}
-      description={description}
-      img={img}
-    />
-    <ViewTransitions />
+    <SEO title={title} description={description} img={img} />
+    <ClientRouter />
   </head>
-  <body class='flex'>
+  <body class='flex dark:bg-primary dark:text-white'>
     <Navbar />
     <slot />
     <script>
@@ -43,7 +38,8 @@ const { title, description, img } = Astro.props
         const links = document.querySelectorAll('[data-tippy-content]')
 
         links.forEach((link) => {
-          const delay = link.getAttribute('href') === window.location.pathname ? 500 : 0
+          const delay =
+            link.getAttribute('href') === window.location.pathname ? 500 : 0
 
           tippy(link, {
             animation: 'shift-away',
@@ -59,7 +55,7 @@ const { title, description, img } = Astro.props
         .text-prose {
           color: #555;
         }
-        .text-secondary {
+        .text-muted {
           color: #232323;
         }
       }

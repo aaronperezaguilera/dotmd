@@ -11,16 +11,13 @@ const allPosts = await (await getCollection('blog'))
   .slice(0, 2)
 ---
 
-<Section
-  title='Artículos'
-  className='print:hidden'
->
+<Section title='Artículos' className='print:hidden'>
   <div class='flex flex-col gap-2'>
     {allPosts.map((post) => <Post post={post} />)}
   </div>
   <a
     href='/blog'
-    class='mt-2 flex w-full items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 transition dark:border-primary dark:bg-secondary dark:hover:bg-hover'
+    class='mt-2 flex w-full items-center justify-center rounded-lg border bg-[#f8f8f8] py-2 transition dark:border-tertiary dark:bg-secondary dark:hover:bg-hover'
   >
     Ver todos los artículos
   </a>

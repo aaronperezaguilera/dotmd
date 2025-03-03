@@ -15,14 +15,6 @@ export default {
       },
       fill: {
         primary: '#232323'
-      },
-      textColor: {
-        primary: '#ffffff',
-        secondary: '#a0a0a0',
-        prose: '#d1d5db'
-      },
-      fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.sans]
       }
     }
   },

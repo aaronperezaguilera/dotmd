@@ -21,16 +21,10 @@ const date = entry.data.pubDate.toLocaleDateString('es-ES', {
 })
 ---
 
-<BlogLayout
-  frontmatter={entry.data}
-  slug={entry.slug}
->
+<BlogLayout frontmatter={entry.data} slug={entry.slug}>
   <header class='mx-auto max-w-[65ch]'>
     <h1 class='text-pretty text-2xl'>{entry.data.title}</h1>
-    <time
-      datetime={date}
-      data-title={date}
-      class='text-sm text-secondary'
+    <time datetime={date} data-title={date} class='text-sm text-muted'
       >{date}</time
     >
     <img
